@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 
 export const SearchBar = styled.div`
-    background-color: #F6F7EB;
 
     form{
         display: flex;
@@ -12,9 +11,11 @@ export const SearchBar = styled.div`
         input{
             width: 400px;
             border: none;
+            background-color: ${props => props.theme.styles.colorSecundario};
         }
         button{
             border: none;
+            background-color: ${props => props.theme.styles.colorPrimario};
         }
     }
 `

@@ -18,12 +18,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    background: transparent;
-    border-radius: 3px;
-    border: 2px solid palevioletred;
-    color: palevioletred;
-    margin: 0.5em 1em;
-    padding: 0.25em 1em;
+    color: #F6F7EB;
+    border: none;
+    padding: .6rem 1rem;
+    box-shadow: none;
   }
 
   img {
@@ -33,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
 
   a{
     text-decoration: none;
+  }
+
+  input{
+    border: none;
+    padding: .6rem;
   }
 `;
 

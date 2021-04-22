@@ -8,7 +8,7 @@ export const Nav = () => {
             <div className="menu-options">
                 <Link>Nuevos</Link>
                 <Link>Ofertas</Link>
-                <Link>Others</Link>
+                <Link>Catalogo</Link>
             </div>
 
             <div className="logo">

@@ -9,6 +9,9 @@ export const Hero = () => {
     return (
         <HeroContainer>
             <AutomaticSlider/>
+            <div>
+                <h1>Puertas al universo</h1>
+            </div>
             <CustomSearch/>
         </HeroContainer>
     )
