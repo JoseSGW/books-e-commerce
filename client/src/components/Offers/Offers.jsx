@@ -8,13 +8,21 @@ export const Offers = () => {
 
     const { data, loading, error } = useFetch()
 
-    const dataTemp = [center, center, center, center, center, center]
+    const dataTemp = [center, center, center, center, center, center, center, center]
 
     return (
         <SliderOffer>
             <div className="slide-track">
+
                 {dataTemp.map(img =>
-                    <img className="imgOffer" src={img} alt="ProductOffer"></img>
+                    <div className="slide">
+                        <img className="imgOffer" src={img} alt="ProductOffer"></img>
+                    </div>
+                )}
+                 {dataTemp.map(img =>
+                    <div className="slide">
+                        <img className="imgOffer" src={img} alt="ProductOffer"></img>
+                    </div>
                 )}
             </div>
         </SliderOffer>
