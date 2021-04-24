@@ -22,6 +22,8 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     padding: .6rem 1rem;
     box-shadow: none;
+    cursor: pointer;
+
   }
 
   img {
@@ -31,6 +33,16 @@ const GlobalStyle = createGlobalStyle`
 
   a{
     text-decoration: none;
+    border-bottom: 2px solid transparent;
+
+    :hover{
+      border-bottom: 2px solid #5C415D;
+      transition: all 1s;
+    }
+  
+    :visited {
+      color: none;
+    } 
   }
 
   input{

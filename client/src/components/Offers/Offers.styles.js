@@ -51,6 +51,7 @@ export const SliderOffer = styled.div`
 
     .imgOffer{
         width: 100%;
+        object-fit: cover;
         transition: transform 1s;
     }
 
