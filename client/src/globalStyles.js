@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: #F6F7EB;
     font-family: Open-Sans, Helvetica, Sans-Serif;
-    font-size: 62.5%
+    font-size: 62.5%;
   }
 
   button {

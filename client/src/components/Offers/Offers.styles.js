@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const SliderOffer = styled.div`
     position: relative;
     height: 250px;
-    margin: auto;
+    margin: 6rem auto;
     width: 90%;
     place-items: center;
     overflow: hidden;

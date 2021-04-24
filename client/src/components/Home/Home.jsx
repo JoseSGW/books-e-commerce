@@ -3,6 +3,8 @@ import { Nav } from "../Nav/Nav";
 import { Hero } from "../Hero/Hero.jsx"
 import { Offers } from '../Offers/Offers';
 import { GeneralContainer } from '../Top10/GeneralContainer';
+import { Footer } from '../Footer/Footer';
+
 
 
 
@@ -14,6 +16,7 @@ export const Home = () => {
             <Hero/>
             <Offers/>
             <GeneralContainer/>
+            <Footer/>
         </>
     )
 }

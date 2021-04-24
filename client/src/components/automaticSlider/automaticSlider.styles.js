@@ -3,9 +3,9 @@ import styled from 'styled-components'
 export const SliderContainer = styled.div`
     position: absolute;
     width: 100vw;
-    height: 40vh;
-    overflow: hidden;
     z-index: -10;
+    overflow: hidden;
+    height:40vh;
 `
 
 
@@ -15,6 +15,9 @@ export const Slider = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    height: 40vh;
+    
 
     .inactive{
         opacity: 0;
@@ -28,6 +31,7 @@ export const Slider = styled.div`
 
     .slide-img{
     object-fit: cover;
+    width:100%;
     }
 
 `
