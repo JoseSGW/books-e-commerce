@@ -1,12 +1,14 @@
-const server = require('express').Router();
-const { Product } = require('../db.js');
+const { Router } = require("express");
+const router = Router();
 
-server.get('/', (req, res, next) => {
-	Product.findAll()
-		.then(products => {
-			res.send(products);
-		})
-		.catch(next);
-});
+const {
+	getProducts,
+} = require("../controllers/product.controller")
 
-module.exports = server;
+
+//aqui van las funciones para cada ruta
+router.get("/:offset/:limit", getProducts)
+
+
+
+module.exports = router;
