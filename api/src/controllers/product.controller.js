@@ -7,7 +7,7 @@ const Op = Sequelize.Op;
 
 const getProducts = async (req, res) => {
 
-    const { offset = 0, limit = 10 } = req.params;
+    const { offset = 0, limit = 12 } = req.params;
 
     try {
         const products = await Book.findAll({

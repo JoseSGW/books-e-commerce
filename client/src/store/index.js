@@ -1,15 +1,15 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
+import { productReducer } from "../reducers/productsReducer";
 /* import { categoriesReducer } from "../reducers/categoriesReducer";
 import { loadingIngredients } from "../reducers/loadingIngredients";
-import { loadingReducer } from "../reducers/loadingReducer";
-import { productsReducer } from "../reducers/productsReducer";
-import { usersReducer } from "../reducers/usersReducer";
+import { loadingReducer } from "../reducers/loadingReducer"; */
+/* import { usersReducer } from "../reducers/usersReducer";
 import { storesReducer } from "../reducers/storesReducer";
 import { reviewsReducer } from "../reducers/ReviewsReducer";
 import { loaderReducer } from '../reducers/loaderReducer';
 import { statisticsReducer } from '../reducers/statisticsReducer'
-import { ordersReducer } from '../reducers/ordersReducer'; */
+import { ordersReducer } from '../reducers/ordersReducer';  */
 
 
 const composeEnhancers =
@@ -19,8 +19,8 @@ const composeEnhancers =
 
 
 const reducers = combineReducers({
-    /* products: productsReducer,
-    loading: loadingReducer,
+    products: productReducer,
+    /* loading: loadingReducer,
     categories: categoriesReducer,
     ingredients: loadingIngredients,
     users: usersReducer,
