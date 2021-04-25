@@ -33,4 +33,13 @@ export const HeroContainer = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);  
     }
+
+    p{
+        position: absolute;
+        font-size: 1.5rem;
+        color: ${props => props.theme.styles.colorSecundario};
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+    }
 `

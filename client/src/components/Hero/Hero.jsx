@@ -11,6 +11,7 @@ export const Hero = () => {
             <AutomaticSlider/>
             <div>
                 <h1>Puertas al universo</h1>
+                <p>El inicio de cientos de viajes</p>
             </div>
             <CustomSearch/>
         </HeroContainer>
