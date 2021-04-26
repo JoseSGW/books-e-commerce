@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector} from "react-redux"
 import { setProducts } from '../../actions/products'
+import { Card } from '../Card/Card'
 import { CatalogueContainer } from './Catalogue.styles'
+
 
 
 export const Catalogue = () => {
@@ -10,8 +12,8 @@ export const Catalogue = () => {
     const { products } = useSelector((state) => state.products)
 
     useEffect(() => {
-        dispatch(setProducts())
-        
+        dispatch(setProducts(0, 12))
+
     }, [])
 
     console.log(products)
@@ -19,7 +21,13 @@ export const Catalogue = () => {
     return (
         <CatalogueContainer>
             {
-                products.map(p => <h2>{p.name}</h2>)
+                products.map(p => 
+                <Card 
+                    name={p.name}
+                    year={p.year}
+                    author={p.author}
+                    editorial={p.editorial}
+                />)
             }
         </CatalogueContainer>
     )

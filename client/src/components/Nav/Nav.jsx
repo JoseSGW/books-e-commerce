@@ -6,13 +6,13 @@ export const Nav = () => {
     return (
         <NavBar>
             <div className="menu-options">
-                <Link>Nuevos</Link>
-                <Link>Ofertas</Link>
-                <Link>Catalogo</Link>
+                <Link to="/new" >Nuevos</Link>
+                <Link to="/offers" >Ofertas</Link>
+                <Link to="/catalogue" >Catalogo</Link>
             </div>
 
             <div className="logo">
-                <img src="" alt="logo"></img>
+                <Link to="/" ><img src="" alt="logo"></img></Link> 
             </div>
 
             <div className="menu-users">
