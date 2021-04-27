@@ -17,6 +17,9 @@ module.exports = (sequelize) => {
     },
     editorial:{
         type: DataTypes.STRING,
+    },
+    discount_id: {
+      type: DataTypes.INTEGER
     }
   });
 
