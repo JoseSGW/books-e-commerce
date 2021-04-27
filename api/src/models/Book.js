@@ -9,17 +9,26 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    resume: {
+      type: DataTypes.TEXT,
+    },
     year: {
-        type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
     },
     author: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
-    editorial:{
-        type: DataTypes.STRING,
+    editorial: {
+      type: DataTypes.STRING,
+    },
+    price: {
+      type: DataTypes.INTEGER,
+    },
+    stock: {
+      type: DataTypes.INTEGER,
     },
     discount_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     }
   });
 

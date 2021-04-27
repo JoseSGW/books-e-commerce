@@ -46,10 +46,10 @@ Order.belongsToMany(Book, {through: Order_car, foreignKey: 'product_id'})
 Book.belongsToMany(Genres, {through: 'Book_Genres'});
 Genres.belongsToMany(Book, {through: 'Book_Genres'});
 
-Book.hasOne(Discount, {foreignKey: 'discount_id'});
+Book.hasOne(Discount, {foreignKey: "discount_id"});
 Discount.belongsToMany(Book, {through: 'Book_Discount'});
 
-Book.hasMany(Images);
+Book.hasMany(Images, {foreignKey: "book_id"} );
 Images.belongsTo(Book);
 // Product.hasMany(Reviews);
 
