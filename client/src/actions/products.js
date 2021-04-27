@@ -18,3 +18,9 @@ export const setProducts = ( offset = 0, limit = 10, word = '', location ) => {
 
     }
 }
+
+export const clearProducts = () => {
+    return {
+        type: types.CLEAR_PRODUCTS
+    }
+}

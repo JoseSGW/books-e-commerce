@@ -3,6 +3,7 @@ import { createGlobalStyle, css } from 'styled-components';
 
 export const styles = {
   colorPrimario: '#5C415D',
+  colorPrimarioClaro: '#89608a',
   colorSecundario: '#F6F7EB',
 
 }
@@ -33,12 +34,7 @@ const GlobalStyle = createGlobalStyle`
 
   a{
     text-decoration: none;
-    border-bottom: 2px solid transparent;
 
-    :hover{
-      border-bottom: 2px solid #5C415D;
-      transition: all 1s;
-    }
   
     :visited {
       color: none;

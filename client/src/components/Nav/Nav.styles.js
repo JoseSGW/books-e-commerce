@@ -13,11 +13,23 @@ export const NavBar = styled.nav`
 
     .menu-options{
         display: flex;
-        gap: 20px;
+        gap: .5rem;
     }
 
     .menu-users{
         display: flex;
-        gap: 20px;
+        gap: .5rem;
+    }
+
+    div {
+        a {
+            border-radius: 5px;
+            padding: 1rem 1.5rem;
+            :hover{
+                background-color: ${props => props.theme.styles.colorPrimarioClaro};
+                color: ${props => props.theme.styles.colorSecundario};
+                transition: all .6s;
+    }
+        }
     }
 `
