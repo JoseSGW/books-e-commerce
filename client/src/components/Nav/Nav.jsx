@@ -1,14 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector} from "react-redux"
+import { setProducts, clearProducts } from '../../actions/products'
 import { NavBar } from "./Nav.styles"
 
 export const Nav = () => {
+
+    const dispatch = useDispatch()
+
+
     return (
         <NavBar>
             <div className="menu-options">
                 <Link to="/new" >Nuevos</Link>
                 <Link to="/offers" >Ofertas</Link>
-                <Link to="/catalogue" >Catalogo</Link>
+                <Link to="/catalogue" onClick={() => dispatch(setProducts())}>Catalogo</Link>
             </div>
 
             <div className="logo">

@@ -29,7 +29,7 @@ const getProducts = async (req, res) => {
                 where: {
                     [Op.or]: [
                         { name: { [Op.iLike]: `%${newKeyWord}%` } },
-                        /* { resume: { [Op.iLike]: `%${newKeyWord}%` } } */
+                        { resume: { [Op.iLike]: `%${newKeyWord}%` } }
                     ]
                 }
             })
@@ -41,6 +41,7 @@ const getProducts = async (req, res) => {
         }
     }
     else {
+        console.log("soy en mismo")
         res.send(cacheMemory.products) // esto devuelve los mismos productos de la consulta anterior si es que la palabra era la misma
     }
 }

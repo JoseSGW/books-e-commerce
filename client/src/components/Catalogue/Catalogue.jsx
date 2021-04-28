@@ -16,7 +16,7 @@ export const Catalogue = () => {
         return () => {
             dispatch(clearProducts());
         }
-    }, [products])
+    }, [])
 
 
     return (
