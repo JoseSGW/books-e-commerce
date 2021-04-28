@@ -9,9 +9,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    book_id: {
-      type: DataTypes.INTEGER
-    }
   });
 
   return Images;

@@ -49,7 +49,7 @@ Genres.belongsToMany(Book, {through: 'Book_Genres'});
 Book.hasOne(Discount, {foreignKey: "discount_id"});
 Discount.belongsToMany(Book, {through: 'Book_Discount'});
 
-Book.hasMany(Images, {foreignKey: "book_id"} );
+Book.hasMany(Images);
 Images.belongsTo(Book);
 // Product.hasMany(Reviews);
 

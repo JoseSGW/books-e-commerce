@@ -26,7 +26,12 @@ const getProducts = async (req, res) => {
                 nest: true,
                 offset,
                 limit,
-                where: { name: newKeyWord && newKeyWord !== '' ? { [Op.iLike]: `%${newKeyWord}%` } : { [Op.not]: null } }
+                where: {
+                    [Op.or]: [
+                        { name: newKeyWord && newKeyWord !== '' ? { [Op.iLike]: `%${newKeyWord}%` } : { [Op.not]: null } },
+                        { resume: newKeyWord && newKeyWord !== '' ? { [Op.iLike]: `%${newKeyWord}%` } : { [Op.not]: null } }
+                    ]
+                }
             })
             res.send(cacheMemory.products)
         }
