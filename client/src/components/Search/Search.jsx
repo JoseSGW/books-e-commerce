@@ -13,11 +13,6 @@ export const Search = () => {
     const dispatch = useDispatch();
     const { location, push } = useHistory();
 
-    useEffect(() => {
-        
-    }, []);
-
-
     //poner condicionales para determinar donde se guardara la data dependiendo del componente que llame a Search
 
     const handleSubmit = (e) => {

@@ -10,14 +10,13 @@ export const Catalogue = () => {
     //aqui va el catalogo general que ocupa la mayor parte de la pagina
     const dispatch = useDispatch()
     const { products } = useSelector((state) => state.products)
-    console.log("estoy en catalogo")
+    
     useEffect(() => {
-        dispatch(setProducts(0, 12))
 
         return () => {
             dispatch(clearProducts());
         }
-    }, [])
+    }, [products])
 
 
     return (

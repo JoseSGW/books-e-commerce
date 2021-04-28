@@ -12,7 +12,7 @@ const cacheMemory = {
 
 const getProducts = async (req, res) => {
 
-    const { offset = 0, limit = 12 } = req.params;
+    const { offset = 0, limit = 40 } = req.params;
 
     const newKeyWord = req.query?.word;
 
@@ -25,14 +25,15 @@ const getProducts = async (req, res) => {
                 raw: true,
                 nest: true,
                 offset,
-                limit,
+                limit: 40,
                 where: {
                     [Op.or]: [
-                        { name: newKeyWord && newKeyWord !== '' ? { [Op.iLike]: `%${newKeyWord}%` } : { [Op.not]: null } },
-                        { resume: newKeyWord && newKeyWord !== '' ? { [Op.iLike]: `%${newKeyWord}%` } : { [Op.not]: null } }
+                        { name: { [Op.iLike]: `%${newKeyWord}%` } },
+                        /* { resume: { [Op.iLike]: `%${newKeyWord}%` } } */
                     ]
                 }
             })
+            console.log(cacheMemory.products)
             res.send(cacheMemory.products)
         }
         catch (error) {
