@@ -33,7 +33,6 @@ const getProducts = async (req, res) => {
                     ]
                 }
             })
-            console.log(cacheMemory.products)
             res.send(cacheMemory.products)
         }
         catch (error) {
@@ -41,12 +40,16 @@ const getProducts = async (req, res) => {
         }
     }
     else {
-        console.log("soy en mismo")
         res.send(cacheMemory.products) // esto devuelve los mismos productos de la consulta anterior si es que la palabra era la misma
     }
 }
 
 
+const productFilter = async () => {
+
+}
+
 module.exports = {
-    getProducts
+    getProducts,
+    productFilter
 }
