@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const { Book, Genres } = require("../db")
+const { Book, Genres, Images } = require("../db")
 
 const Op = Sequelize.Op;
 
@@ -11,17 +11,23 @@ const cacheMemory = {
 
 const addBooks = async (req, res) => {
 
-    const { product, genres } = req.body; //{ name, resume, year, author, editorial, price, stock, discount_id}
+    const { product, genres, newImages } = req.body; //{ name, resume, year, author, editorial, price, stock, discount_id}
     //genres sera un array con id de generos
 
     const newProduct = await Book.create(product)
 
-    if(genres.length > 0) newProduct.setGenres(genres)
-            
-    
+    if (genres.length > 0) newProduct.setGenres(genres)
+
+    if (newImages.length > 0) {
+
+        for (const url of newImages) {
+            const image = await Images.create({ url });
+            newProduct.addImage(image)
+        }
+    }
 
 
-    res.json({msg: "Producto creado correctamente"})
+    res.json({ msg: "Producto creado correctamente" })
 
 }
 
