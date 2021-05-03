@@ -12,8 +12,6 @@ export const productReducer = (state = initialState, action) => {
                 products: state.products.splice().concat(action.payload)
             }
         case types.CLEAR_PRODUCTS:
-            console.log("llegue al reducer??")
-
             return {
                 ...state,
                 products: state.products.splice()
