@@ -16,19 +16,21 @@ const addBooks = async (req, res) => {
 
     const newProduct = await Book.create(product)
 
-    if (genres.length > 0) newProduct.setGenres(genres)
+    if (genres.length > 0) {
+        for (const id of genres) {
+            const genre = await Genres.findByPk(id)
+            newProduct.addGenre(genre)
+        }
+    }
 
     if (newImages.length > 0) {
-
         for (const url of newImages) {
             const image = await Images.create({ url });
             newProduct.addImage(image)
         }
     }
 
-
     res.json({ msg: "Producto creado correctamente" })
-
 }
 
 
@@ -45,17 +47,21 @@ const getBooks = async (req, res) => {
 
         try {
             cacheMemory.products = await Book.findAll({
-                raw: true,
                 nest: true,
+                //plain: true,
                 offset,
-                limit: 40,
+                limit,
                 where: {
                     [Op.or]: [
                         { name: { [Op.iLike]: `%${newKeyWord}%` } },
                         { resume: { [Op.iLike]: `%${newKeyWord}%` } }
                     ]
+                },
+                include: {
+                    all: true
                 }
             })
+            console.log("soy la respuesta", cacheMemory.products)
             res.send(cacheMemory.products)
         }
         catch (error) {
@@ -63,6 +69,7 @@ const getBooks = async (req, res) => {
         }
     }
     else {
+        console.log("soy el mismo de antes")
         res.send(cacheMemory.products) // esto devuelve los mismos productos de la consulta anterior si es que la palabra era la misma
     }
 }

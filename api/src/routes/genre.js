@@ -8,7 +8,7 @@ const {
 
 
 //aqui van las funciones para cada ruta
-router.get("/allGenre", getGenre)
+router.get("/getGenre", getGenre)
 router.post("/addGenre", addGenre)
 
 
