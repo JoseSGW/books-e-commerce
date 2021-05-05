@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const { Book, Genres, Images } = require("../db")
+const { Book, Genres, Images, conn } = require("../db")
 
 const Op = Sequelize.Op;
 
@@ -74,6 +74,36 @@ const getBooks = async (req, res) => {
     }
 }
 
+const filteringOptions = async (req, res) => {
+
+    const options = {
+        nest: true,
+        raw: true
+    }
+
+    try {
+        const authors = await conn.query('SELECT author FROM books GROUP BY (author)', options)
+
+        const minAndMax = await conn.query('SELECT MIN(price) as min_price, MAX(price) as max_price FROM books', options)
+
+        const years = await conn.query("SELECT year FROM books GROUP BY(year)", options)
+
+        const genres = await conn.query("SELECT name FROM genres GROUP BY(name)", options)
+
+        const data = {
+            authors,
+            minAndMax,
+            years,
+            genres
+        }
+
+        res.send(data);
+    }
+    catch (error) {
+        console.error(error)
+    }
+}
+
 
 const productFilter = async () => {
 
@@ -84,5 +114,6 @@ const productFilter = async () => {
 module.exports = {
     getBooks,
     productFilter,
-    addBooks
+    addBooks,
+    filteringOptions
 }
