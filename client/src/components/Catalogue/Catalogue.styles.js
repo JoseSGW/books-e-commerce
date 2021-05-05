@@ -2,10 +2,9 @@ import styled from 'styled-components'
 
 
 export const CatalogueContainer = styled.div`
-    margin: 5rem auto; 
+    margin: 0 auto; 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap:25px;
-    max-width: 90%;
-
+    width: 90%;
 `
