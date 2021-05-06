@@ -90,12 +90,12 @@ const filteringOptions = async (req, res) => {
 
         const genres = await conn.query("SELECT name FROM genres GROUP BY(name)", options)
 
-        const data = {
+        const data = [
             authors,
             minAndMax,
             years,
             genres
-        }
+        ]
 
         res.send(data);
     }

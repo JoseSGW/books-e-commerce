@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from '../../hooks/useForm'
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -8,23 +8,31 @@ import { useFetch } from '../../hooks/useFetch';
 
 export const FilterBooks = () => {
 
-    const [form, handleInputChange] = useForm({
+    const [filter, setFilter] = useState([])
 
-    })
-
-    const url = "http://localhost:3001/books/filteringOptions"
-    const { data, loading, error } = useFetch(url)
+    /*  const [form, handleInputChange] = useForm({
+ 
+     })
+  */
 
     useEffect(() => {
-        console.log(data)
-    }, [data])
+        fetch("http://localhost:3001/books/filteringOptions")
+            .then(data => data.json(data))
+            .then(data => {
+                setFilter(data)
+            })
+    }, [])
+
+
+    const [author, minAndMax, years, genres] = !!filter && filter
+
 
     return (
         <FitlerContainer>
             <form action="">
                 <Range
                     allowCross={false}
-                    defaultValue={[20, 80]}
+                    defaultValue={filter.length > 0 ? [minAndMax[0].min_price, minAndMax[0].max_price] : [20, 80]}
                 />
                 <label htmlFor="precio"></label>
                 <input type="" />
