@@ -82,15 +82,15 @@ const filteringOptions = async (req, res) => {
     }
 
     try {
-        const authors = await conn.query('SELECT author FROM books GROUP BY (author)', options)
+        const authors = await conn.query('SELECT author FROM books GROUP BY (author) ORDER BY author', options)
 
         const minAndMax = await conn.query('SELECT MIN(price) as min_price, MAX(price) as max_price FROM books', options)
 
         cacheMemory.minAndMax = minAndMax;
 
-        const years = await conn.query("SELECT year FROM books GROUP BY(year)", options)
+        const years = await conn.query("SELECT year FROM books GROUP BY(year) ORDER BY year", options)
 
-        const genres = await conn.query("SELECT name FROM genres GROUP BY(name)", options)
+        const genres = await conn.query("SELECT name FROM genres GROUP BY(name) ORDER BY name", options)
 
         const data = [
             authors,

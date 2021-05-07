@@ -4,7 +4,7 @@ export const FitlerContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    max-height: 100%;
+    height: 100%;
     width: 20vw;
     background-color: blanchedalmond;
 

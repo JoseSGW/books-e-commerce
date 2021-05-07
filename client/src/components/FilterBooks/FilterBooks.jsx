@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from '../../hooks/useForm'
-//import Slider from 'rc-slider';
-//import 'rc-slider/assets/index.css';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -12,10 +10,6 @@ import Slider from '@material-ui/core/Slider';
 import { FitlerContainer } from './FilterBooks.styles'
 import { useDispatch } from 'react-redux';
 import { setProductsByFilters, setProducts } from '../../actions/products';
-
-
-/* const createSliderWithTooltip = Slider.createSliderWithTooltip;
-const Range = createSliderWithTooltip(Slider.Range); */
 
 
 export const FilterBooks = () => {
@@ -56,7 +50,7 @@ export const FilterBooks = () => {
 
                     <FormControl className="filter">
                         <InputLabel htmlFor="author">Autor</InputLabel>
-                        <Select defaultValue = "" onChange={handleInputChange} name="author" id="author">
+                        <Select defaultValue="" onChange={handleInputChange} name="author" id="author">
                             {
                                 authors?.map(author => <MenuItem value={author.author}>{author.author}</MenuItem>)
                             }
@@ -65,7 +59,7 @@ export const FilterBooks = () => {
 
                     <FormControl className="filter">
                         <InputLabel htmlFor="year" type="text">Año</InputLabel>
-                        <Select defaultValue = "" onChange={handleInputChange} name="year" id="year" defaultValue="">
+                        <Select defaultValue="" onChange={handleInputChange} name="year" id="year" defaultValue="">
                             {
                                 years?.map(year => <MenuItem value={year.year}>{year.year}</MenuItem>)
                             }
@@ -74,7 +68,7 @@ export const FilterBooks = () => {
 
                     <FormControl className="filter">
                         <InputLabel htmlFor="genre" type="text">Generos</InputLabel>
-                        <Select defaultValue = "" onChange={handleInputChange} name="genre" id="genre">
+                        <Select defaultValue="" onChange={handleInputChange} name="genre" id="genre">
                             {
                                 genres?.map(genre => <MenuItem value={genre.name}>{genre.name}</MenuItem>)
                             }
@@ -82,30 +76,18 @@ export const FilterBooks = () => {
                     </FormControl>
 
                     <FormControl className="filter price-container">
-
                         <Typography id="range-slider" gutterBottom>
                             Precio entre
                         </Typography>
                         <Slider
                             name="range"
                             value={loading && [form.range[0], form.range[1]]}
-                            onChange={(e, val) => handleInputChange({ target: { name: "range", value: val } })} 
+                            onChange={(e, val) => handleInputChange({ target: { name: "range", value: val } })}
                             valueLabelDisplay="auto"
                             aria-labelledby="range-slider"
                             max={max_price}
                             min={min_price}
-                        //getAriaValueText={valuetext}
                         />
-                        {/* <InputLabel htmlFor="precio">Precio entre</InputLabel> */}
-
-                        {/* <Range
-                            allowCross={false}
-                            defaultValue={[20, 800]}
-                            min={filter.length > 0 ? minAndMax[0].min_price : 0}
-                            max={filter.length > 0 ? minAndMax[0].max_price : 100}
-                            onAfterChange={(e) => handleInputChange({ target: { name: "range", value: e } })}
-
-                        /> */}
                     </FormControl>
 
                     <FormControl className="botones-de-filtro">

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector} from "react-redux"
 import { setProducts, clearProducts } from '../../actions/products'
-import { Card } from '../Card/Card'
+import { CardComponent } from '../Card/Card'
 import { CatalogueContainer } from './Catalogue.styles'
 
 
@@ -23,7 +23,7 @@ export const Catalogue = () => {
         <CatalogueContainer>
             {
                 products.map(p => 
-                <Card 
+                <CardComponent 
                     name={p.name}
                     year={p.year}
                     author={p.author}
