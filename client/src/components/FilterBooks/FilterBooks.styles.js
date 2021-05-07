@@ -29,4 +29,10 @@ export const FitlerContainer = styled.div`
     .btn-filtrar{
         margin-top: 3rem;
     }
+
+    .botones-de-filtro{
+        display: flex;
+        margin-top: 2rem;
+        gap: 0;
+    }
 `

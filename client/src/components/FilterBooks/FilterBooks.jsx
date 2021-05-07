@@ -8,9 +8,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { FitlerContainer } from './FilterBooks.styles'
-import { useFetch } from '../../hooks/useFetch';
 import { useDispatch } from 'react-redux';
-import { setProductsByFilters } from '../../actions/products';
+import { setProductsByFilters, setProducts } from '../../actions/products';
 
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
@@ -33,7 +32,7 @@ export const FilterBooks = () => {
 
     const [authors, minAndMax, years, genres] = !!filter && filter
 
-    const [form, handleInputChange] = useForm({})
+    const [form, handleInputChange, setForm] = useForm({})
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -46,8 +45,8 @@ export const FilterBooks = () => {
                 <fieldset>
 
                     <FormControl className="filter">
-                        <InputLabel id="demo-simple-select-label" htmlFor="author">Autor</InputLabel>
-                        <Select onChange={handleInputChange} id="demo-simple-select-label" name="author" id="author">
+                        <InputLabel htmlFor="author">Autor</InputLabel>
+                        <Select onChange={handleInputChange} name="author" id="author">
                             {
                                 authors?.map(author => <MenuItem value={author.author}>{author.author}</MenuItem>)
                             }
@@ -83,7 +82,12 @@ export const FilterBooks = () => {
 
                         />
                     </FormControl>
-                    <Button onClick={handleSubmit} className="btn-filtrar" variant="outlined">Filtrar</Button>
+
+                    <FormControl className="botones-de-filtro">
+                        <Button onClick={() => dispatch(setProducts())} className="btn-limpiar" variant="outlined">Limpiar filtro</Button>
+                        <Button onClick={handleSubmit} className="btn-filtrar" variant="outlined">Filtrar</Button>
+                    </FormControl>
+                    
                 </fieldset>
             </FormControl>
         </FitlerContainer>
