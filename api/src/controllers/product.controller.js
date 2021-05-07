@@ -86,6 +86,8 @@ const filteringOptions = async (req, res) => {
 
         const minAndMax = await conn.query('SELECT MIN(price) as min_price, MAX(price) as max_price FROM books', options)
 
+        cacheMemory.minAndMax = minAndMax;
+
         const years = await conn.query("SELECT year FROM books GROUP BY(year)", options)
 
         const genres = await conn.query("SELECT name FROM genres GROUP BY(name)", options)
@@ -105,8 +107,37 @@ const filteringOptions = async (req, res) => {
 }
 
 
-const productFilter = async () => {
+const productFilter = async (req, res) => {
 
+    const { author, year, genre, min, max } = req.query
+
+    const options = {
+        where: {},
+        include: [{ all: true }]
+    }
+
+    if (author && author !== 'undefined') {
+        options.where.author = author
+    }
+    if (year && year !== 'undefined') {
+        options.where.year = year
+    }
+    if(genre && genre !== 'undefined'){
+        options.include.push({ model: Genres, where: { name: genre } })
+    }
+    if (min && min !== 'undefined' || max && max !== 'undefined') {
+        options.where.price = { [Op.between]: [min ? min : cacheMemory.minAndMax[0].min_price, max ? max : cacheMemory.minAndMax[0].max_price] }
+    }
+
+    try {
+
+        const products = await Book.findAll(options)
+
+        res.send(products)
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 

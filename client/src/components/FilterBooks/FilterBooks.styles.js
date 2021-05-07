@@ -12,7 +12,6 @@ export const FitlerContainer = styled.div`
         display: flex;
         flex-direction: column;
         
-
         fieldset{
             .filter{
                 display: flex;
