@@ -13,8 +13,9 @@ export const CardComponent = ({ name, year, author, editorial, images }) => {
     return (
         <OwnCard>
 
-            <CardImage className="card-container">
-                <img src={images[0] ? images[0].url : genericUrl} alt="book" />
+            <CardImage
+                className="card-container"
+                image={images[0] ? images[0].url : genericUrl} title="book">
             </CardImage>
 
             <OwnCardContent>
@@ -23,7 +24,7 @@ export const CardComponent = ({ name, year, author, editorial, images }) => {
                 <CardInfo component="h3" >{author}</CardInfo>
                 <CardInfo component="h3" >{editorial}</CardInfo>
             </OwnCardContent>
-            
+
         </OwnCard>
     )
 }

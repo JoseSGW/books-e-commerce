@@ -7,12 +7,10 @@ const { default: styled } = require("styled-components");
 
 export const OwnCard = styled(Card)`
     display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: 0 auto;
-    justify-content: center;
-    width: 200px;
-    height: 300px;
+    justify-content: space-between;
+    width: 400px;
+    height: 200px;
 
     .book-tittle{
         font-size: 1.2rem;
@@ -21,16 +19,16 @@ export const OwnCard = styled(Card)`
 `
 
 export const CardImage = styled(CardMedia)`
-    flex: 1 auto;
-    img {
-        object-fit: cover;
-    }
+    left: 0;
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
 `
 
 export const OwnCardContent = styled(CardContent)`
-
+    width: 60%
 `
 
 export const CardInfo = styled(Typography)`
-    flex: 1 auto;
+    
 `
