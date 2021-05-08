@@ -13,6 +13,11 @@ export const OwnCard = styled(Card)`
     justify-content: center;
     width: 200px;
     height: 300px;
+
+    .book-tittle{
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
 `
 
 export const CardImage = styled(CardMedia)`

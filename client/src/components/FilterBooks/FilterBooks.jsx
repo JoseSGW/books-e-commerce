@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from '../../hooks/useForm'
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -49,30 +51,33 @@ export const FilterBooks = () => {
                 <fieldset>
 
                     <FormControl className="filter">
-                        <InputLabel htmlFor="author">Autor</InputLabel>
-                        <Select defaultValue="" onChange={handleInputChange} name="author" id="author">
-                            {
-                                authors?.map(author => <MenuItem value={author.author}>{author.author}</MenuItem>)
-                            }
-                        </Select>
+                        <Autocomplete
+                            id="author-autocomplete"
+                            options={authors}
+                            onChange={(e, val) => handleInputChange({ target: { name: "author", value: val ? val.author : ""} })} name="author"
+                            getOptionLabel={(author) => author.author}
+                            renderInput={(params) => <TextField {...params} label="Autor" variant="outlined" />}
+                        />
                     </FormControl>
 
                     <FormControl className="filter">
-                        <InputLabel htmlFor="year" type="text">Año</InputLabel>
-                        <Select defaultValue="" onChange={handleInputChange} name="year" id="year" defaultValue="">
-                            {
-                                years?.map(year => <MenuItem value={year.year}>{year.year}</MenuItem>)
-                            }
-                        </Select>
+                        <Autocomplete
+                            id="year-autocomplete"
+                            options={years}
+                            onChange={(e, val) => handleInputChange({ target: { name: "year", value: val ? parseInt(val.year) : ""} })} name="year"
+                            getOptionLabel={(year) => year.year.toString()}
+                            renderInput={(params) => <TextField {...params} label="Año" variant="outlined" />}
+                        />
                     </FormControl>
 
                     <FormControl className="filter">
-                        <InputLabel htmlFor="genre" type="text">Generos</InputLabel>
-                        <Select defaultValue="" onChange={handleInputChange} name="genre" id="genre">
-                            {
-                                genres?.map(genre => <MenuItem value={genre.name}>{genre.name}</MenuItem>)
-                            }
-                        </Select>
+                        <Autocomplete
+                            id="genre-autocomplete"
+                            options={genres}
+                            onChange={(e, val) => handleInputChange({ target: { name: "genre", value: val ? val.name : ""} })} name="genre"
+                            getOptionLabel={(genre) => genre.name}
+                            renderInput={(params) => <TextField {...params} label="Genero" variant="outlined" />}
+                        />
                     </FormControl>
 
                     <FormControl className="filter price-container">

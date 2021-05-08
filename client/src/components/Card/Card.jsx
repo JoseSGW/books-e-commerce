@@ -18,7 +18,7 @@ export const CardComponent = ({ name, year, author, editorial, images }) => {
             </CardImage>
 
             <OwnCardContent>
-                <CardInfo component="h2" >{name}</CardInfo>
+                <CardInfo component="h2" className="book-tittle"  >{name}</CardInfo>
                 <CardInfo component="h3" >{year}</CardInfo>
                 <CardInfo component="h3" >{author}</CardInfo>
                 <CardInfo component="h3" >{editorial}</CardInfo>
