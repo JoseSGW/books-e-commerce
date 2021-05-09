@@ -2,33 +2,55 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
+import CardActionArea from '@material-ui/core/CardActionArea';
 const { default: styled } = require("styled-components");
 
 
-export const OwnCard = styled(Card)`
+export const StyledCard = styled(Card)`
     display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
     width: 400px;
     height: 200px;
+    .img-cardActionMedia{
+        width: 40%;
+    }
 
-    .book-tittle{
-        font-size: 1.2rem;
-        font-weight: bold;
+    .info-container{
+        width: 60%;
+        padding: 10px;
+    }
+
+    .titles-container{
+        height: 80%;
+    }
+
+    .option-container{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 20%;
+        display: flex;
+        gap: 4%;
+    }
+
+    .btn{
+        padding: 3px;
+        margin: 0;
     }
 `
 
-export const CardImage = styled(CardMedia)`
-    left: 0;
-    width: 40%;
+export const StyledCardActionArea = styled(CardActionArea)`
+    margin: 0;
+`
+
+export const StyledCardMedia = styled(CardMedia)`
     height: 100%;
-    object-fit: cover;
+    width: 100%;
 `
 
-export const OwnCardContent = styled(CardContent)`
-    width: 60%
+export const StyledCardContent = styled(CardContent)`
+
 `
 
-export const CardInfo = styled(Typography)`
+export const StyledTypography = styled(Typography)`
     
 `
