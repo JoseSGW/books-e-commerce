@@ -30,6 +30,7 @@ export const Catalogue = () => {
                     editorial={p.editorial}
                     images={p.images}
                     price={p.price}
+                    id={p.id}
                 />)
             }
         </CatalogueContainer>
