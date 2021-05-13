@@ -24,7 +24,6 @@ export const FilterBooks = () => {
             .then(data => data.json(data))
             .then(data => {
                 let { min_price, max_price } = data[1][0]
-                console.log(min_price)
                 setFilter([...data])
                 setForm({ ...form, range: [min_price, max_price] })
                 setLoading(true)

@@ -14,7 +14,7 @@ export const CardComponent = ({ id, name, year, author, editorial, images, price
 
     return (
         <StyledCard>
-            <StyledCardActionArea component={DetailsBook} to={`/details/${id}`} className="img-cardActionMedia">
+            <StyledCardActionArea component={Link} to={`/details/${id}`} className="img-cardActionMedia">
                 <StyledCardMedia
                     className="card-container"
                     image={images[0] ? images[0].url : genericUrl} title="book">
@@ -23,7 +23,7 @@ export const CardComponent = ({ id, name, year, author, editorial, images, price
 
 
             <StyledCardContent className="info-container" component="div">
-                <StyledCardActionArea className="titles-container">
+                <StyledCardActionArea className="titles-container" component={Link} to={`/details/${id}`}>
                     <StyledTypography component="h2" className="book-tittle"  >{name}</StyledTypography>
                     <StyledTypography component="h3" >{author}</StyledTypography>
 

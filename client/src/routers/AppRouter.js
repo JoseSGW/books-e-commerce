@@ -21,12 +21,12 @@ export const AppRouter = () => {
                         <Route component={FilterBooks}></Route> */}        
                     </Route>
                     <Route
-                        path='/'
-                        component={Home}
-                    />
-                    <Route
                         path='/details/:idProduct'
                         component={DetailsBook}
+                    />
+                    <Route
+                        exact path='/'
+                        component={Home}
                     />
 
                     <Redirect to="/" />

@@ -34,6 +34,26 @@ const addBooks = async (req, res) => {
 }
 
 
+const getBookById = async (req, res) => {
+    const idProduct = req.params.idProduct
+
+    console.log(typeof idProduct)
+
+    try {
+        const product = await Book.findByPk(idProduct, {
+            include: {
+                all: true,
+            }
+        })
+        console.log(product)
+        res.send(product)
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
 
 const getBooks = async (req, res) => {
 
@@ -146,5 +166,6 @@ module.exports = {
     getBooks,
     productFilter,
     addBooks,
-    filteringOptions
+    filteringOptions,
+    getBookById
 }
