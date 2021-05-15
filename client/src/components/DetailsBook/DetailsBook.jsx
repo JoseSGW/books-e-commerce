@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { PurchaseButtons } from '../../PurchaseButtons/PurchaseButtons'
-import { StyledContainer } from './DetailsBook.styles'
+import { StyledContainer, ResumeContainer, GeneralContainer } from './DetailsBook.styles'
 const genericUrl = "https://www.julianmarquina.es/wp-content/uploads/Para-efecto-legales-un-libro-es-todo-impreso-no-periodico-que-contiene-49-paginas-o-mas.jpg"
 
 
@@ -26,19 +26,25 @@ export const DetailsBook = () => {
     const { author, discount, editorial, genres, images, name, price, resume, stock, year } = book;
 
     return (
-        <StyledContainer>
-            <div className="info-container">
-                <div className="image-container">
-                    <img src={isLoad && images[0] ? images[0].url : genericUrl} alt="book" />
-                </div>
+        <GeneralContainer className="general-container">
+            <StyledContainer>
+                <div className="info-container">
+                    <div className="image-container">
+                        <img src={isLoad && images[0] ? images[0].url : genericUrl} alt="book" />
+                    </div>
 
-                <div className="text-container">
-                    <h2>{name}</h2>
-                    <h3>{year}</h3>
-                    <h3>{editorial}</h3>
+                    <div className="text-container">
+                        <h2>{name}</h2>
+                        <h3>{year}</h3>
+                        <h3>{editorial}</h3>
+                    </div>
                 </div>
-            </div>
-            <PurchaseButtons />
-        </StyledContainer>
+                <PurchaseButtons />
+            </StyledContainer>
+
+            <ResumeContainer className="resume-container">
+                <p>{resume}</p>
+            </ResumeContainer>
+        </GeneralContainer>
     )
 }

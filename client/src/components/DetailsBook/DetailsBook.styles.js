@@ -4,13 +4,17 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
 
+export const GeneralContainer = styled.div`
+    max-width: 90vw;
+    margin: 0 auto;
+`
+
 export const StyledContainer = styled(Container)`
     display: flex;
     flex-direction: column;
     background-color: yellowgreen;
-    width: 600px;
+    width: 100%;
     height: 500px;
-    margin: 0 auto;
 
     .info-container{
         display: flex;
@@ -32,6 +36,7 @@ export const StyledContainer = styled(Container)`
             font-size: 1.3rem;
         }
     }
+
 `
 export const StyledTypography = styled(Typography)`
     
@@ -39,5 +44,13 @@ export const StyledTypography = styled(Typography)`
 
 export const StyledCssBaseline = styled(CssBaseline)`
     
+`
+
+export const ResumeContainer = styled.section`
+        background-color: khaki;
+        padding: 1rem;
+        width: 100%;
+        font-size: 1.3rem;
+        margin: 2% auto;
 `
 
