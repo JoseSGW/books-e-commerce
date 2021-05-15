@@ -1,10 +1,7 @@
 import React from 'react'
-import Button from '@material-ui/core/Button';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import { StyledCardMedia, StyledTypography, StyledCard, StyledCardContent, StyledCardActionArea } from './Card.styles'
-import { DetailsBook } from '../DetailsBook/DetailsBook';
 import { Link } from 'react-router-dom';
+import { PurchaseButtons } from '../../PurchaseButtons/PurchaseButtons';
 
 
 const genericUrl = "https://www.julianmarquina.es/wp-content/uploads/Para-efecto-legales-un-libro-es-todo-impreso-no-periodico-que-contiene-49-paginas-o-mas.jpg"
@@ -32,11 +29,7 @@ export const CardComponent = ({ id, name, year, author, editorial, images, price
                     </StyledCardContent>
                 </StyledCardActionArea>
 
-                <StyledCardContent className="option-container">
-                    <Button className="btn btn-wish" variant="outlined"><ShoppingCartIcon/></Button>
-                    <Button className="btn btn-wish" variant="outlined"><FavoriteIcon/></Button>
-                    <Button className="btn btn-filtrar" variant="outlined">Comprar</Button>
-                </StyledCardContent>
+                <PurchaseButtons/>
             </StyledCardContent>
         </StyledCard>
     )

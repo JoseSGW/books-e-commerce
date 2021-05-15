@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Slider, SliderContainer } from './automaticSlider.styles'
-import { images, blackImg } from "./imagesSlider"
+import { images } from "./imagesSlider"
  
 export const AutomaticSlider = ({delay = 6000}) => {
 
@@ -8,12 +8,12 @@ export const AutomaticSlider = ({delay = 6000}) => {
     const length = images.length;
 
     useEffect(() => {
-        setTimeout(
+        const idTimeOut =setTimeout(
           () =>
           nextSlide(),
           delay
         );
-        return () => {};
+        return () => clearTimeout(idTimeOut);
       }, [current]);
 
     const nextSlide = () => { //esta funcion solo esta en caso que se desee agregar botones iz y der

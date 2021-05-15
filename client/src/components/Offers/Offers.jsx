@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFetch } from '../../hooks/useFetch'
+//import { useFetch } from '../../hooks/useFetch'
 import { SliderOffer } from './Offers.styles'
 import center from "../../img/center.jpg"
 import uno from "../../img/uno.jpg"
@@ -9,7 +9,7 @@ import tres from "../../img/tres.jpg"
 
 export const Offers = () => {
 
-    const { data, loading, error } = useFetch()
+    //const { data, loading, error } = useFetch()
     //una vez que lleguen los productos con descuento reemplazar la data
     const dataTemp = [uno, center, dos, center, tres, center, uno, center]
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector} from "react-redux"
-import { setProducts, clearProducts } from '../../actions/products'
+import { clearProducts } from '../../actions/products'
 import { CardComponent } from '../Card/Card'
 import { CatalogueContainer } from './Catalogue.styles'
 
