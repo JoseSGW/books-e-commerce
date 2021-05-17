@@ -3,13 +3,21 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
-const { default: styled } = require("styled-components");
+import styled from "styled-components";
 
 
 export const StyledCard = styled(Card)`
     display: flex;
     width: 400px;
     height: 200px;
+
+    @media only screen and (max-width: 1280px) {
+        
+        width: 380px;
+        height: 220px;
+    }
+
+
     .img-cardActionMedia{
         width: 40%;
     }
@@ -21,15 +29,6 @@ export const StyledCard = styled(Card)`
 
     .titles-container{
         height: 80%;
-    }
-
-    .option-container{
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: 20%;
-        display: flex;
-        gap: 4%;
     }
 
     .btn{
@@ -48,7 +47,14 @@ export const StyledCardMedia = styled(CardMedia)`
 `
 
 export const StyledCardContent = styled(CardContent)`
-
+    .option-container{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 30%;
+        display: flex;
+        gap: 4%;
+    }
 `
 
 export const StyledTypography = styled(Typography)`

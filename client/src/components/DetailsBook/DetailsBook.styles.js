@@ -5,16 +5,21 @@ import Container from '@material-ui/core/Container';
 
 
 export const GeneralContainer = styled.div`
-    max-width: 90vw;
-    margin: 0 auto;
+    max-width: 1280px;
+    margin: 2rem auto;
+
+    @media only screen and (max-width: 1280px) {     
+        max-width: 90vw;
+    }
 `
 
 export const StyledContainer = styled(Container)`
     display: flex;
     flex-direction: column;
-    background-color: yellowgreen;
+    border: 1px solid black;
+    height: 400px;
     width: 100%;
-    height: 500px;
+
 
     .info-container{
         display: flex;
@@ -33,24 +38,29 @@ export const StyledContainer = styled(Container)`
         }
 
         h3{
-            font-size: 1.3rem;
+            font-size: 1rem;
         }
     }
 
+    .option-container{
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        gap: 3%;
+    }
 `
 export const StyledTypography = styled(Typography)`
     
 `
 
 export const StyledCssBaseline = styled(CssBaseline)`
-    
 `
 
+
 export const ResumeContainer = styled.section`
-        background-color: khaki;
         padding: 1rem;
-        width: 100%;
         font-size: 1.3rem;
         margin: 2% auto;
+        border: 1px solid black;
 `
 

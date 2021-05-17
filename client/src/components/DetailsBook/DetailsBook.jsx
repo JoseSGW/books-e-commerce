@@ -35,14 +35,18 @@ export const DetailsBook = () => {
 
                     <div className="text-container">
                         <h2>{name}</h2>
+                        <h3>{author}</h3>
                         <h3>{year}</h3>
                         <h3>{editorial}</h3>
+                        <h2>Precio: {price}</h2>
                     </div>
                 </div>
-                <PurchaseButtons />
+                <PurchaseButtons className="botones-opciones"/>
+
             </StyledContainer>
 
             <ResumeContainer className="resume-container">
+                <h2>Resumen</h2>
                 <p>{resume}</p>
             </ResumeContainer>
         </GeneralContainer>
