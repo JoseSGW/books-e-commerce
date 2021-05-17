@@ -44,10 +44,10 @@ export const FilterBooks = () => {
     return (
         <FitlerContainer>
             <FormControl action="" className="form-container">
-                <fieldset>
 
                     <FormControl className="filter">
                         <Autocomplete
+                            className="maxHeight"
                             id="author-autocomplete"
                             options={authors}
                             onChange={(e, val) => handleInputChange({ target: { name: "author", value: val ? val.author : ""} })} name="author"
@@ -58,6 +58,7 @@ export const FilterBooks = () => {
 
                     <FormControl className="filter">
                         <Autocomplete
+                            className="maxHeight"
                             id="year-autocomplete"
                             options={years}
                             onChange={(e, val) => handleInputChange({ target: { name: "year", value: val ? parseInt(val.year) : ""} })} name="year"
@@ -68,6 +69,7 @@ export const FilterBooks = () => {
 
                     <FormControl className="filter">
                         <Autocomplete
+                            className="maxHeight"
                             id="genre-autocomplete"
                             options={genres}
                             onChange={(e, val) => handleInputChange({ target: { name: "genre", value: val ? val.name : ""} })} name="genre"
@@ -77,10 +79,11 @@ export const FilterBooks = () => {
                     </FormControl>
 
                     <FormControl className="filter price-container">
-                        <Typography id="range-slider" gutterBottom>
+                        <Typography id="range-slider" gutterBottom className="maxHeight">
                             Precio entre
                         </Typography>
                         <Slider
+                            className="maxHeight"
                             name="range"
                             value={loading && [form.range[0], form.range[1]]}
                             onChange={(e, val) => handleInputChange({ target: { name: "range", value: val } })}
@@ -96,7 +99,7 @@ export const FilterBooks = () => {
                         <Button onClick={handleSubmit} className="btn-filtrar" variant="outlined">Filtrar</Button>
                     </FormControl>
 
-                </fieldset>
+                
             </FormControl>
         </FitlerContainer>
     )

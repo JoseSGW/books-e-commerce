@@ -3,27 +3,36 @@ import styled from "styled-components";
 export const FitlerContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
     height: 100%;
-    width: 20vw;
-    background-color: blanchedalmond;
+    width: 20%;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    .maxHeight{
+        height: 100%;
+        margin: 0;
+        border: none;
+    }
 
     .form-container{
         display: flex;
         flex-direction: column;
-        
-        fieldset{
+        height: 100%;
+
             .filter{
                 display: flex;
                 flex-direction: column;
-                margin: 2.5rem auto;
                 gap: .5rem;
+                height: 100%;
+                margin: 1rem 0;
             }
-        }
+
     }
 
     .price-container{
         margin-top: 3rem;
+
     }
 
     .btn-filtrar{
@@ -34,5 +43,6 @@ export const FitlerContainer = styled.div`
         display: flex;
         margin-top: 2rem;
         gap: 0;
+
     }
 `
