@@ -8,6 +8,7 @@ export const FitlerContainer = styled.div`
     padding: 1rem;
     border: 1px solid black;
     border-radius: 5px;
+    background-color: ${props => props.theme.styles.colorSecundario};
 
     .maxHeight{
         height: 100%;

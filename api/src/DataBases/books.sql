@@ -34,7 +34,7 @@ INSERT INTO public.books(
 INSERT INTO public.books(
 	name, resume, year, author, editorial, price, stock, "createdAt", "updatedAt")
 	VALUES ('Sexo Inteligente. Manual de Sexualidad Para Adolescentes' , 'A modo de cuestionario pregunta-respuesta, la ginecóloga Andrea Huneeus aborda los tópicos de sexualidad por los que más le preguntan en consulta. Aborda desde los cambios físicos en la pubertad hasta temáticas urgentes de discutir como el consentimiento en el sexo, el autoconocimiento sexual, el abuso y las enfermedades de transmisión sexual.', 2020, 'Andrea Huneeus', 'Vergara'
-, 100000, 10, current_timestamp, current_timestamp);
+, 10000, 10, current_timestamp, current_timestamp);
 
 INSERT INTO public.books(
 	name, resume, year, author, editorial, price, stock, "createdAt", "updatedAt")
@@ -58,7 +58,7 @@ INSERT INTO public.books(
 INSERT INTO public.books(
 	name, resume, year, author, editorial, price, stock, "createdAt", "updatedAt")
 	VALUES ('Agujeros Negros' , 'El primer libro del científico Fernando Izaurieta es un viaje hacia los agujeros negros, feroces monstruos de espacio y tiempo. Usando el pensamiento científico, su relato nos lleva desde el inicio del tiempo en el big bang hasta su destrucción en la singularidad de los agujeros negros. La ciencia, el método de la duda y el escepticismo, es la clave para descifrar los misterios del universo y, también, para descubrir cómo forjar un futuro para la humanidad aun en sus momentos de crisis. A través de un relato ágil, junto con ejemplos cotidianos y accesibles, en estas páginas podemos asomarnos al interior de los agujeros negros. Allí, las ideas de Albert Einstein y Stephen Hawking nos llevan a visualizar fenómenos tan violentos y extraños que hacen palidecer a las grandes obras de la ciencia ficción. Agujeros negros, destructores del tiempo nos muestra cómo la ciencia nos permite ir más allá de los límites de nuestra imaginación para comprender los lugares más desconocidos y apasionantes del cosmos', 2021, 'Fernando Izaurieta', 'Planeta'
-, 650000, 76, current_timestamp, current_timestamp);
+, 65000, 76, current_timestamp, current_timestamp);
 
 INSERT INTO public.books(
 	name, resume, year, author, editorial, price, stock, "createdAt", "updatedAt")
