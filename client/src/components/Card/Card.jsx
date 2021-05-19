@@ -29,7 +29,7 @@ export const CardComponent = ({ id, name, year, author, editorial, images, price
                     </StyledCardContent>
                 </StyledCardActionArea>
 
-                <PurchaseButtons/>
+                <PurchaseButtons product={{id: id, name: name, price: price, images: images}}/>
             </StyledCardContent>
         </StyledCard>
     )

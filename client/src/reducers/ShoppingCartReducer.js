@@ -7,10 +7,17 @@ const initialState = {
 export const ShoppingCartReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.ADD_TO_SHOPPING_CART:
-            return state.ShoppingCartProduct.map((p, i, a) => {
-                if (p.id === action.payload.id) p.amount = p.amount + 1
-                if (a.length - 1 === i) p.amount = 0;
-            })
+            const product = state.ShoppingCartProduct.find(p => p.id === action.payload.id)
+            if (product) {
+                product.amount = product.amount + 1
+                return {
+                    ...state,
+                    ShoppingCartProduct: state.ShoppingCartProduct.((p) => {
+
+                    })
+                }
+            }
+
         default:
             return state;
     }
