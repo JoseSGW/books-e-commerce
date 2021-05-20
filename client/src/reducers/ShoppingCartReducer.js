@@ -12,12 +12,12 @@ export const ShoppingCartReducer = (state = initialState, action) => {
                 product.amount = product.amount + 1
                 return {
                     ...state,
-                    ShoppingCartProduct: state.ShoppingCartProduct.((p) => {
+                    ShoppingCartProduct: state.ShoppingCartProduct.map((p) => {
 
                     })
                 }
             }
-
+            break;
         default:
             return state;
     }
