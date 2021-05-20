@@ -1,11 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import { Catalogue } from '../components/Catalogue/Catalogue';
 import { CatalogueContainer } from '../components/Container/CatalogueContainer';
 import { DetailsBook } from '../components/DetailsBook/DetailsBook';
-import { FilterBooks } from '../components/FilterBooks/FilterBooks';
 import { Home } from "../components/Home/Home"
 import { Nav } from '../components/Nav/Nav';
+import { ProductsInCart } from '../components/ProductsInCart/ProductsInCart';
 
 
 
@@ -23,6 +22,10 @@ export const AppRouter = () => {
                     <Route
                         path='/details/:idProduct'
                         component={DetailsBook}
+                    />
+                    <Route
+                        path='/products-in-cart'
+                        component={ProductsInCart}
                     />
                     <Route
                         exact path='/'

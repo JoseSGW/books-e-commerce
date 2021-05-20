@@ -24,7 +24,7 @@ export const Nav = () => {
 
             <div className="menu-users">
                 <Link
-                    to="/login"> <CustomizedBadges className="icon-cart"/>
+                    to="/products-in-cart"> <CustomizedBadges className="icon-cart"/>
                 </Link>
                 <Link
                     to="/login"> Iniciar sesión

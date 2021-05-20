@@ -35,6 +35,7 @@ export const NavBar = styled.nav`
             button{
                 margin: 0;
                 padding: 0;
+                
             }
             :hover{
                 background-color: ${props => props.theme.styles.colorPrimarioClaro};
