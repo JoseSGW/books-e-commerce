@@ -23,7 +23,7 @@ export const DetailsBook = () => {
         return () => setIsLoad(false)
     }, [])
 
-    const { author, discount, editorial, genres, images, name, price, resume, stock, year } = book;
+    const { id, author, discount, editorial, genres, images, name, price, resume, stock, year } = book;
 
     return (
         <GeneralContainer className="general-container">
@@ -41,7 +41,7 @@ export const DetailsBook = () => {
                         <h2>Precio: {price}</h2>
                     </div>
                 </div>
-                <PurchaseButtons className="botones-opciones"/>
+                <PurchaseButtons className="botones-opciones" product={{id, name, price, images, amount: 1}}/>
 
             </StyledContainer>
 

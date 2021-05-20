@@ -10,14 +10,14 @@ export const ShoppingCartReducer = (state = initialState, action) => {
             const product = state.ShoppingCartProduct.find(p => p.id === action.payload.id)
             if (product) {
                 product.amount = product.amount + 1
+                return state
+            }
+            else {
                 return {
                     ...state,
-                    ShoppingCartProduct: state.ShoppingCartProduct.map((p) => {
-
-                    })
+                    ShoppingCartProduct: state.ShoppingCartProduct.concat(action.payload)
                 }
             }
-            break;
         default:
             return state;
     }
