@@ -10,8 +10,9 @@ export function ProductsInCart() {
             <Container maxWidth="sm">
                 <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }}>
                     <div>
-                        <h2>Hola</h2>
+                        <img src="" alt="" />
                     </div>
+                    <div></div>
                 </Typography>
 
             </Container>
