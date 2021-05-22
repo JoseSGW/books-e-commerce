@@ -5,7 +5,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { Button, makeStyles, IconButton, TextField } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
-import { removeFromShoppingCart } from '../../actions/ShoppingCart';
+import { removeFromShoppingCart, updateAmountToShoppingCart } from '../../actions/ShoppingCart';
 import { useDispatch } from 'react-redux';
 
 const genericUrl = "https://www.julianmarquina.es/wp-content/uploads/Para-efecto-legales-un-libro-es-todo-impreso-no-periodico-que-contiene-49-paginas-o-mas.jpg"
@@ -22,42 +22,34 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export function ProductsInCart(props) {
-
-    const [state, setstate] = useState(props)
+export function ProductsInCart({ name, amount, id, images, price }) {
 
     const dispatch = useDispatch()
 
     const classes = useStyles();
 
-    useEffect(() => {
-    }, [state]);
-
-    
-    const { name, amount, id, images, price } = state;
-    console.log(name)
     return (
         <Container className={classes.separate} style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', width: '70%', padding: 0 }}>
-            <CardMedia className={classes.media} image={images[0] ? images[0].url : genericUrl} ></CardMedia>
+            <CardMedia className={classes.media} image={images && images[0] ? images[0].url : genericUrl} ></CardMedia>
 
             <Typography component='h2' style={{ width: '40%', alignSelf: 'center', margin: '0 auto' }}>
                 {name}
             </Typography>
             <div style={{ width: '15%', alignSelf: 'center', display: 'flex' }}>
-                <IconButton onClick={() => setstate({ ...state, amount: amount > 1 ? amount - 1 : amount})}><IndeterminateCheckBoxIcon /></IconButton>
+                <IconButton onClick={() => dispatch(updateAmountToShoppingCart({id, amount: amount > 1 ? amount - 1 : amount}))}><IndeterminateCheckBoxIcon /></IconButton>
                 <TextField
                     id="standard-number"
                     label="Number"
                     type="number"
                     value={amount}
                     InputProps={{
-                        inputProps: { 
+                        inputProps: {
                             min: '1', max: '10'
                         },
                         readOnly: true,
                     }}
                 />
-                <IconButton onClick={() => setstate({ ...state, amount: amount + 1 })}><AddBoxIcon /></IconButton>
+                <IconButton onClick={() => dispatch(updateAmountToShoppingCart({id, amount: amount + 1}))}><AddBoxIcon /></IconButton>
             </div>
             <Typography component='h2' style={{ width: '10%', alignSelf: 'center' }}>
                 $ {price * amount}

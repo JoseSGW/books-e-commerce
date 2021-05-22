@@ -23,6 +23,16 @@ export const ShoppingCartReducer = (state = initialState, action) => {
                 ...state,
                 ShoppingCartProduct: state.ShoppingCartProduct.filter(p => p.id !== action.payload)
             }
+        case types.UPDATE_AMOUNT_TO_SHOPPING_CART:
+            return {
+                ...state,
+                ShoppingCartProduct: state.ShoppingCartProduct.map(p => {
+                    if (p.id === action.payload.id) {
+                        p.amount = action.payload.amount
+                    }
+                    return p
+                })
+            }
         default:
             return state;
     }

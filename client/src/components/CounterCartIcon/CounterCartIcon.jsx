@@ -16,7 +16,6 @@ const StyledBadge = withStyles((theme) => ({
 export default function CustomizedBadges() {
     const { ShoppingCartProduct } = useSelector((state) => state.shoppingCart)
 
-    console.log(ShoppingCartProduct)
     return (
         <IconButton aria-label="cart">
             <StyledBadge badgeContent={ShoppingCartProduct.length} color="secondary">

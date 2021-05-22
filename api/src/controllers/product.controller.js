@@ -79,7 +79,6 @@ const getBooks = async (req, res) => {
                     all: true
                 }
             })
-            console.log("soy la respuesta", cacheMemory.products)
             res.send(cacheMemory.products)
         }
         catch (error) {
@@ -87,7 +86,6 @@ const getBooks = async (req, res) => {
         }
     }
     else {
-        console.log("soy el mismo de antes")
         res.send(cacheMemory.products) // esto devuelve los mismos productos de la consulta anterior si es que la palabra era la misma
     }
 }
@@ -154,7 +152,7 @@ const productFilter = async (req, res) => {
         res.send(products)
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
 

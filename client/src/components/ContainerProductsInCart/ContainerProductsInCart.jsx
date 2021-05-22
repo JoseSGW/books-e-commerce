@@ -10,14 +10,18 @@ export function ContainerProductsInCart() {
 
     useEffect(() => {
     }, [ShoppingCartProduct]);
-    console.log(ShoppingCartProduct)
+    console.log("soy el contenedor", ShoppingCartProduct)
     return (
-        <>
-            <Container maxWidth="lg">
-                {
-                    ShoppingCartProduct.map(p => <ProductsInCart {...p} />)
+        <Container maxWidth="lg">
+            {
+                ShoppingCartProduct.map(p => {
+                    console.log(p);
+                    return <ProductsInCart {...p} />
                 }
-            </Container>
-        </>
+                )
+
+            }
+        </Container>
+
     );
 }

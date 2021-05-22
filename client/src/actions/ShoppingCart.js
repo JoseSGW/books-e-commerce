@@ -14,3 +14,10 @@ export const removeFromShoppingCart = (payload) => {
         payload
     }
 }
+
+export const updateAmountToShoppingCart = (payload) => {
+    return {
+        type: types.UPDATE_AMOUNT_TO_SHOPPING_CART,
+        payload
+    }
+}
