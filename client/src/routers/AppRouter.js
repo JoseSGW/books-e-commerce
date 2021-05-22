@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { CatalogueContainer } from '../components/Container/CatalogueContainer';
+import { ContainerProductsInCart } from '../components/ContainerProductsInCart/ContainerProductsInCart';
 import { DetailsBook } from '../components/DetailsBook/DetailsBook';
 import { Home } from "../components/Home/Home"
 import { Nav } from '../components/Nav/Nav';
@@ -25,7 +26,7 @@ export const AppRouter = () => {
                     />
                     <Route
                         path='/products-in-cart'
-                        component={ProductsInCart}
+                        component={ContainerProductsInCart}
                     />
                     <Route
                         exact path='/'
