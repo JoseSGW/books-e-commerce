@@ -18,6 +18,11 @@ export const ShoppingCartReducer = (state = initialState, action) => {
                     ShoppingCartProduct: state.ShoppingCartProduct.concat(action.payload)
                 }
             }
+        case types.REMOVE_FROM_SHOPPING_CART:
+            return {
+                ...state,
+                ShoppingCartProduct: state.ShoppingCartProduct.filter(p => p.id !== action.payload)
+            }
         default:
             return state;
     }

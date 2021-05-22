@@ -7,3 +7,10 @@ export const addToShoppingCart = (payload) => {
         payload
     }
 }
+
+export const removeFromShoppingCart = (payload) => {
+    return {
+        type: types.REMOVE_FROM_SHOPPING_CART,
+        payload
+    }
+}

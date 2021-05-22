@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import CardMedia from '@material-ui/core/CardMedia';
-import { Button, Divider, makeStyles } from '@material-ui/core';
+import { Button, Divider, makeStyles, IconButton, TextField } from '@material-ui/core';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
+import { removeFromShoppingCart } from '../../actions/ShoppingCart';
+import { useDispatch } from 'react-redux';
 
 const genericUrl = "https://www.julianmarquina.es/wp-content/uploads/Para-efecto-legales-un-libro-es-todo-impreso-no-periodico-que-contiene-49-paginas-o-mas.jpg"
 
@@ -19,26 +23,45 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export function ProductsInCart({ name, amount, id, images, price }) {
+export function ProductsInCart(props) {
+
+    const [state, setstate] = useState(props)
+
+    const dispatch = useDispatch()
 
     const classes = useStyles();
 
+
+    const { name, amount, id, images, price } = state;
     return (
         <Container className={classes.separate} style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', width: '70%', padding: 0 }}>
             <CardMedia className={classes.media} image={images[0] ? images[0].url : genericUrl} ></CardMedia>
 
-            <Typography component='h2' className="name-product" style={{ width: '50%', alignSelf: 'center', margin: '0 auto' }}>
+            <Typography component='h2' style={{ width: '40%', alignSelf: 'center', margin: '0 auto' }}>
                 {name}
             </Typography>
-            <Typography component='h2' className="amount-product" style={{ width: '5%', alignSelf: 'center' }}>
-                {amount}
+            <div style={{ width: '15%', alignSelf: 'center', display: 'flex' }}>
+                <IconButton onClick={() => setstate({ ...state, amount: amount > 1 ? amount - 1 : amount})}><IndeterminateCheckBoxIcon /></IconButton>
+                <TextField
+                    id="standard-number"
+                    label="Number"
+                    type="number"
+                    value={amount}
+                    InputProps={{
+                        inputProps: { 
+                            min: '1', max: '10'
+                        },
+                        readOnly: true,
+                    }}
+                />
+                <IconButton onClick={() => setstate({ ...state, amount: amount + 1 })}><AddBoxIcon /></IconButton>
+            </div>
+            <Typography component='h2' style={{ width: '10%', alignSelf: 'center' }}>
+                $ {price * amount}
             </Typography>
-            <Typography component='h2' className="price-product" style={{ width: '10%', alignSelf: 'center'}}>
-            $ {price * amount}
+            <Typography style={{ width: '15%', alignSelf: 'center' }}>
+                <Button onClick={() => dispatch(removeFromShoppingCart(id))} variant="contained" color="secondary">Eliminar</Button>
             </Typography>
-            <Typography className="detele-product" style={{ width: '15%', alignSelf: 'center' }}>
-                <Button variant="contained" color="secondary">Eliminar</Button>
-            </Typography>
-        </Container>
+        </Container >
     );
 }
