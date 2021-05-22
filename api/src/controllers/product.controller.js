@@ -37,7 +37,6 @@ const addBooks = async (req, res) => {
 const getBookById = async (req, res) => {
     const idProduct = req.params.idProduct
 
-    console.log(typeof idProduct)
 
     try {
         const product = await Book.findByPk(idProduct, {
@@ -45,7 +44,6 @@ const getBookById = async (req, res) => {
                 all: true,
             }
         })
-        console.log(product)
         res.send(product)
 
     } catch (error) {

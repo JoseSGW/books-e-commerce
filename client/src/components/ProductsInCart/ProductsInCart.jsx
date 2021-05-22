@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import CardMedia from '@material-ui/core/CardMedia';
-import { Button, Divider, makeStyles, IconButton, TextField } from '@material-ui/core';
+import { Button, makeStyles, IconButton, TextField } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 import { removeFromShoppingCart } from '../../actions/ShoppingCart';
@@ -31,8 +30,12 @@ export function ProductsInCart(props) {
 
     const classes = useStyles();
 
+    useEffect(() => {
+    }, [state]);
 
+    
     const { name, amount, id, images, price } = state;
+    console.log(name)
     return (
         <Container className={classes.separate} style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', width: '70%', padding: 0 }}>
             <CardMedia className={classes.media} image={images[0] ? images[0].url : genericUrl} ></CardMedia>
