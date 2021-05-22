@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import CardMedia from '@material-ui/core/CardMedia';
-import { Button, makeStyles, IconButton, TextField } from '@material-ui/core';
+import { makeStyles, IconButton, TextField } from '@material-ui/core';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 import { removeFromShoppingCart, updateAmountToShoppingCart } from '../../actions/ShoppingCart';
@@ -29,17 +30,17 @@ export function ProductsInCart({ name, amount, id, images, price }) {
     const classes = useStyles();
 
     return (
-        <Container className={classes.separate} style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', width: '70%', padding: 0 }}>
+        <Container  style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', padding: 0, gap: '1rem', maxWidth: '100%' }}>
             <CardMedia className={classes.media} image={images && images[0] ? images[0].url : genericUrl} ></CardMedia>
 
-            <Typography component='h2' style={{ width: '40%', alignSelf: 'center', margin: '0 auto' }}>
+            <Typography component='h2' style={{ width: '35%', alignSelf: 'center'}}>
                 {name}
             </Typography>
-            <div style={{ width: '15%', alignSelf: 'center', display: 'flex' }}>
-                <IconButton onClick={() => dispatch(updateAmountToShoppingCart({id, amount: amount > 1 ? amount - 1 : amount}))}><IndeterminateCheckBoxIcon /></IconButton>
+            <div style={{ width: '20%', alignSelf: 'center', display: 'flex' }}>
+                <IconButton onClick={() => dispatch(updateAmountToShoppingCart({ id, amount: amount > 1 ? amount - 1 : amount }))}><IndeterminateCheckBoxIcon /></IconButton>
                 <TextField
                     id="standard-number"
-                    label="Number"
+                    label="Cantidad"
                     type="number"
                     value={amount}
                     InputProps={{
@@ -49,14 +50,20 @@ export function ProductsInCart({ name, amount, id, images, price }) {
                         readOnly: true,
                     }}
                 />
-                <IconButton onClick={() => dispatch(updateAmountToShoppingCart({id, amount: amount + 1}))}><AddBoxIcon /></IconButton>
+                <IconButton onClick={() => dispatch(updateAmountToShoppingCart({ id, amount: amount + 1 }))}><AddBoxIcon /></IconButton>
             </div>
             <Typography component='h2' style={{ width: '10%', alignSelf: 'center' }}>
                 $ {price * amount}
             </Typography>
-            <Typography style={{ width: '15%', alignSelf: 'center' }}>
-                <Button onClick={() => dispatch(removeFromShoppingCart(id))} variant="contained" color="secondary">Eliminar</Button>
-            </Typography>
+
+            <IconButton
+                onClick={() => dispatch(removeFromShoppingCart(id))}
+                variant="contained"
+                color="secondary"
+                style={{ width: '10%', alignSelf: 'center' }}>
+                <DeleteForeverIcon />
+            </IconButton>
+
         </Container >
     );
 }
