@@ -33,7 +33,7 @@ export function ProductsInCart({ name, amount, id, images, price }) {
         <Container  style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', padding: 0, gap: '1rem', maxWidth: '100%' }}>
             <CardMedia className={classes.media} image={images && images[0] ? images[0].url : genericUrl} ></CardMedia>
 
-            <Typography component='h2' style={{ width: '35%', alignSelf: 'center'}}>
+            <Typography component='h2' style={{ width: '40%', alignSelf: 'center'}}>
                 {name}
             </Typography>
             <div style={{ width: '20%', alignSelf: 'center', display: 'flex' }}>
@@ -60,7 +60,7 @@ export function ProductsInCart({ name, amount, id, images, price }) {
                 onClick={() => dispatch(removeFromShoppingCart(id))}
                 variant="contained"
                 color="secondary"
-                style={{ width: '10%', alignSelf: 'center' }}>
+                style={{ alignSelf: 'center' }}>
                 <DeleteForeverIcon />
             </IconButton>
 
