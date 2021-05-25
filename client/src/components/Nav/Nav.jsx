@@ -27,10 +27,10 @@ export const Nav = () => {
                     to="/products-in-cart"> <CustomizedBadges className="icon-cart"/>
                 </Link>
                 <Link
-                    to="/login"> Iniciar sesión
+                    to="/login-or-register"> Iniciar sesión
                 </Link>
                 <Link
-                    to="/register"> Registrarse
+                    to="/login-or-register"> Registrarse
                 </Link>
             </div>
         </NavBar>
