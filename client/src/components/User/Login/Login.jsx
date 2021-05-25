@@ -11,13 +11,11 @@ export const Login = () => {
             <form style={{ display: 'flex', flexDirection: 'column', padding: '1rem', gap: '1rem' }}>
                 <Typography component='h2'>Inicia Sesión</Typography>
                 <TextField
-                    id="standard-email-input"
                     label="Email"
                     type="email"
                     variant="outlined"
                 />
                 <TextField
-                    id="standard-password-input"
                     label="Password"
                     type="password"
                     variant="outlined"

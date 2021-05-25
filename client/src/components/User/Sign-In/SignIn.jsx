@@ -1,10 +1,20 @@
 import { Button, Container, FormGroup, FormHelperText, Input, InputLabel, TextField, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import { useTheme } from 'styled-components'
+import { useForm } from '../../../hooks/useForm'
 
 
 export const SignIn = () => {
+
+    const [ values, handleInputChange, setValues ] = useForm({})
+
+    const handleSubmit = () => {
+        fetch()
+    }
+
     const theme = useTheme()
+
+    const { usuario, email, password } = values && values;
 
     return (
         <Container style={{ maxWidth: '50%' }}>
@@ -13,20 +23,30 @@ export const SignIn = () => {
                 <TextField
                     id="standard-text-input"
                     label="Nombre de usuario"
+                    name='usuario'
                     type="text"
                     variant="outlined"
+                    value={usuario}
+                    onChange={(e) => handleInputChange(e)}
                 />
                 <TextField
                     id="standard-email-input"
                     label="Email"
                     type="email"
                     variant="outlined"
+                    required
+                    name='email'
+                    value={email}
+                    onChange={(e) => handleInputChange(e)}
                 />
                 <TextField
                     id="standard-password-input"
                     label="Password"
                     type="password"
                     variant="outlined"
+                    name='password'
+                    value={password}
+                    onChange={(e) => handleInputChange(e)}
                 />
                 <Button style={{
                     color: `${theme.styles.colorSecundario}`,
