@@ -11,20 +11,6 @@ const addUser = async (req, res) => {
 
     const newProduct = await User.create(product) //comprobar que el email no exista
 
-    if (genres.length > 0) {
-        for (const id of genres) {
-            const genre = await Genres.findByPk(id)
-            newProduct.addGenre(genre)
-        }
-    }
-
-    if (newImages.length > 0) {
-        for (const url of newImages) {
-            const image = await Images.create({ url });
-            newProduct.addImage(image)
-        }
-    }
-
     res.json({ msg: "Producto creado correctamente" })
 }
 
