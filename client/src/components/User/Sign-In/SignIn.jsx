@@ -6,10 +6,16 @@ import { useForm } from '../../../hooks/useForm'
 
 export const SignIn = () => {
 
-    const [ values, handleInputChange, setValues ] = useForm({})
+    const [values, handleInputChange, setValues] = useForm({})
 
     const handleSubmit = () => {
-        fetch()
+        fetch(`http://localhost:3001/users/addUser`, {
+            method: "POST",
+            body: values
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+
     }
 
     const theme = useTheme()
@@ -48,10 +54,14 @@ export const SignIn = () => {
                     value={password}
                     onChange={(e) => handleInputChange(e)}
                 />
-                <Button style={{
-                    color: `${theme.styles.colorSecundario}`,
-                    background: `${theme.styles.colorPrimarioClaro}`
-                }}>Registrarse</Button>
+                <Button
+                    style={{
+                        color: `${theme.styles.colorSecundario}`,
+                        background: `${theme.styles.colorPrimarioClaro}`
+                    }}
+                    onClick={handleSubmit}
+                >Registrarse
+                </Button>
             </form>
         </Container>
     )

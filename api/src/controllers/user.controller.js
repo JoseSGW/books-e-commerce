@@ -6,12 +6,30 @@ const Op = Sequelize.Op;
 
 const addUser = async (req, res) => {
 
-    const { user, email, password } = req.body; 
+    const { usuario, email, password } = req.body;
 
+    try {
+        const emailAlreadyExist = await User.findAll({
+            where: {
+                email
+            }
+        })
 
-    const newProduct = await User.create(product) //comprobar que el email no exista
-
-    res.json({ msg: "Producto creado correctamente" })
+        if (!emailAlreadyExist) {
+            const newUser = await User.create({
+                firstname: usuario,
+                email,
+                password
+            })
+            res.send(newUser)
+        }
+        else {
+            res.json({ msg: "El email ingresado ya se encuentra en uso" })
+        }
+    }
+    catch (error) {
+        console.error(error)
+    }
 }
 
 
