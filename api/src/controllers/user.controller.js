@@ -7,6 +7,7 @@ const Op = Sequelize.Op;
 const addUser = async (req, res) => {
 
     const { usuario, email, password } = req.body;
+    console.log(req.body)
 
     try {
         const emailAlreadyExist = await User.findAll({
@@ -14,8 +15,7 @@ const addUser = async (req, res) => {
                 email
             }
         })
-
-        if (!emailAlreadyExist) {
+        if (emailAlreadyExist.length === 0) {
             const newUser = await User.create({
                 firstname: usuario,
                 email,

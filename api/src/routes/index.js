@@ -3,7 +3,6 @@ const { Router } = require('express');
 const productRouter = require('./product.js');
 const genreRouter = require('./genre.js');
 const userRouter = require('./user')
-const { ResumeContainer } = require('../../../client/src/components/DetailsBook/DetailsBook.styles.js');
 
 const router = Router();
 

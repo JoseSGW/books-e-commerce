@@ -11,7 +11,10 @@ export const SignIn = () => {
     const handleSubmit = () => {
         fetch(`http://localhost:3001/users/addUser`, {
             method: "POST",
-            body: values
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(values),
         })
             .then(response => response.json())
             .then(data => console.log(data))

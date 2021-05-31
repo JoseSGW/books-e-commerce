@@ -15,7 +15,7 @@ export const DetailsBook = () => {
 
     useEffect(() => {
         fetch(`http://localhost:3001/books/getBookById/${idProduct}`)
-            .then(response => response.json(response))
+            .then(response => response.json())
             .then(data => {
                 setBook(data)
                 setIsLoad(true)

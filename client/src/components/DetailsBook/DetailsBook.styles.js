@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import styled from 'styled-components';
 
 
 export const GeneralContainer = styled.div`
@@ -49,6 +49,7 @@ export const StyledContainer = styled(Container)`
         gap: 3%;
     }
 `
+
 export const StyledTypography = styled(Typography)`
     
 `
