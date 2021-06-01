@@ -7,7 +7,6 @@ const Op = Sequelize.Op;
 const addUser = async (req, res) => {
 
     const { usuario, email, password } = req.body;
-    console.log(req.body)
 
     try {
         const emailAlreadyExist = await User.findAll({

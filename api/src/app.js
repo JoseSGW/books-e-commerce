@@ -1,7 +1,11 @@
 const express = require('express');
+var cors = require('cors')
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+const passport = require('./config/passportConfig')
+const cookieSession = require('cookie-session')
+
 
 require('./db.js');
 
@@ -20,6 +24,24 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+
+server.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
+
+server.use(
+  cookieSession({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true
+  })
+);
+
+server.use(passport.initialize());
+server.use(passport.session());
 
 server.use('/', routes);
 

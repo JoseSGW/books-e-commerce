@@ -1,10 +1,28 @@
 import { Button, Container, FormGroup, FormHelperText, Input, InputLabel, TextField, Typography } from '@material-ui/core'
 import React from 'react'
 import { useTheme } from 'styled-components'
-
+import { useForm } from '../../../hooks/useForm'
 
 export const Login = () => {
     const theme = useTheme()
+
+    const [user, handleInputChange] = useForm({ username: '', password: '' })
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        fetch('http://localhost:3001/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user),
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+    }
+
+    const { username, password } = user;
 
     return (
         <Container style={{ maxWidth: '50%' }}>
@@ -13,17 +31,26 @@ export const Login = () => {
                 <TextField
                     label="Email"
                     type="email"
+                    name='username'
                     variant="outlined"
+                    value={username}
+                    onChange={handleInputChange}
                 />
                 <TextField
                     label="Password"
                     type="password"
+                    name='password'
                     variant="outlined"
+                    value={password}
+                    onChange={handleInputChange}
                 />
                 <Button style={{
                     color: `${theme.styles.colorSecundario}`,
                     background: `${theme.styles.colorPrimarioClaro}`
-                }}>Iniciar sesión</Button>
+                }}
+                    onClick={handleLogin}
+                >Iniciar sesión
+                </Button>
             </form>
         </Container>
     )

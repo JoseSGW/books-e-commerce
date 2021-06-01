@@ -6,7 +6,7 @@ import { useForm } from '../../../hooks/useForm'
 
 export const SignIn = () => {
 
-    const [values, handleInputChange, setValues] = useForm({})
+    const [values, handleInputChange, setValues] = useForm({usuario: '', email: '', password: ''})
 
     const handleSubmit = () => {
         fetch(`http://localhost:3001/users/addUser`, {
