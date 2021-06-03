@@ -28,6 +28,11 @@ export const NavBar = styled.nav`
         background-color: red;
     }
 
+    .container-user-options{
+        display: flex;
+        align-items: center;
+    }
+
     div {
         a {
             border-radius: 5px;

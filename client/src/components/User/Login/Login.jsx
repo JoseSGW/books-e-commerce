@@ -1,10 +1,15 @@
 import { Button, Container, FormGroup, FormHelperText, Input, InputLabel, TextField, Typography } from '@material-ui/core'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useTheme } from 'styled-components'
+import { setUser } from '../../../actions/userLoggedIn'
 import { useForm } from '../../../hooks/useForm'
+
 
 export const Login = () => {
     const theme = useTheme()
+
+    const dispatch = useDispatch()
 
     const [user, handleInputChange] = useForm({ username: '', password: '' })
 
@@ -19,7 +24,10 @@ export const Login = () => {
             credentials: 'include'
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(user => {
+                console.log(user)
+                dispatch(setUser(user))
+            })
     }
 
     const { username, password } = user;

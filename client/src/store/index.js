@@ -2,6 +2,8 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { productReducer } from "../reducers/productsReducer";
 import { ShoppingCartReducer } from "../reducers/ShoppingCartReducer";
+import { userLoggedInReducer } from "../reducers/userLoggedInReducer";
+
 /* import { categoriesReducer } from "../reducers/categoriesReducer";
 import { loadingIngredients } from "../reducers/loadingIngredients";
 import { loadingReducer } from "../reducers/loadingReducer"; */
@@ -21,7 +23,8 @@ const composeEnhancers =
 
 const reducers = combineReducers({
     products: productReducer,
-    shoppingCart: ShoppingCartReducer
+    shoppingCart: ShoppingCartReducer,
+    userLoggedIn: userLoggedInReducer
     /* loading: loadingReducer,
     categories: categoriesReducer,
     ingredients: loadingIngredients,
