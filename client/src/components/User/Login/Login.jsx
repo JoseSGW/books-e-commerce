@@ -1,6 +1,7 @@
 import { Button, Container, FormGroup, FormHelperText, Input, InputLabel, TextField, Typography } from '@material-ui/core'
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
 import { useTheme } from 'styled-components'
 import { setUser } from '../../../actions/userLoggedIn'
 import { useForm } from '../../../hooks/useForm'
@@ -8,6 +9,8 @@ import { useForm } from '../../../hooks/useForm'
 
 export const Login = () => {
     const theme = useTheme()
+
+    const history = useHistory()
 
     const dispatch = useDispatch()
 
@@ -25,8 +28,9 @@ export const Login = () => {
         })
             .then(response => response.json())
             .then(user => {
-                console.log(user)
+                localStorage.setItem('user', JSON.stringify(user))
                 dispatch(setUser(user))
+                history.push("/");
             })
     }
 

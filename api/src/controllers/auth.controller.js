@@ -20,12 +20,19 @@ const login = async (req, res, next) => {
                 firstname: user.firstname,
                 lastname: user.lastname,
                 email: user.email,
-                user_id: user.id   
+                user_id: user.id
             })
         });
     })(req, res, next);
 }
 
+const logout = async (req, res) => {
+    console.log('hola?')
+    req.logout();
+    res.clearCookie('secret');
+};
+
 module.exports = {
-    login
+    login,
+    logout
 }

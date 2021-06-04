@@ -12,8 +12,6 @@ export const Nav = () => {
 
     const { user } = useSelector(state => state.userLoggedIn)
 
-    console.log(user)
-
 
     return (
         <NavBar>

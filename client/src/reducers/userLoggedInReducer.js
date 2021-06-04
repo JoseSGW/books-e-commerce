@@ -7,10 +7,13 @@ const initialState = {
 export const userLoggedInReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.SET_USER:
-            console.log("llegue al reducer ", action.payload)
             return {
                 ...state,
                 user: { ...action.payload }
+            }
+        case types.REMOVE_USER:
+            return {
+                ...state, user: {}
             }
         default:
             return state;
