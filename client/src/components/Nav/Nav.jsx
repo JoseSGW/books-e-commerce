@@ -11,7 +11,7 @@ export const Nav = () => {
     const dispatch = useDispatch()
 
     const { user } = useSelector(state => state.userLoggedIn)
-
+    console.log(user)
 
     return (
         <NavBar>

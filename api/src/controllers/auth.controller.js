@@ -1,10 +1,10 @@
 const passport = require("passport");
-
+const jwt = require('jsonwebtoken');
 
 
 
 const login = async (req, res, next) => {
-    passport.authenticate('local', { session: true }, function (err, user, info) {
+    passport.authenticate('local', { session: false }, function (err, user, info) {
         if (err) {
             return next(err);
         }
@@ -16,20 +16,30 @@ const login = async (req, res, next) => {
             if (err) {
                 return next(err);
             }
+            const token = jwt.sign({id: user.id}, 'soyUnSuperSecretoJWT', { expiresIn : '1d' })
             return res.json({
                 firstname: user.firstname,
                 lastname: user.lastname,
                 email: user.email,
-                user_id: user.id
+                user_id: user.id,
+                token
             })
+
+            /* return res.status(200).json({
+                firstname: user.firstname,
+                lastname: user.lastname,
+                email: user.email,
+                user_id: user.id
+            }) */
         });
     })(req, res, next);
 }
 
 const logout = async (req, res) => {
-    console.log('hola?')
-    req.logout();
-    res.clearCookie('secret');
+    if (req.isAuthenticated()) {
+        req.logout();
+    }
+    res.status(200).send("Haz hecho Logout");
 };
 
 module.exports = {

@@ -16,13 +16,17 @@ export const LoggedInUserIcon = ({ firstname }) => {
 
     const handleSignOff = () => {
         fetch('http://localhost:3001/auth/logout', {
-            method: 'GET',
-            credentials: 'same-origin'
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
         })
             .then(() => {
                 localStorage.clear();
                 dispatch(removeUser())
             })
+            .catch(error => console.error('Error:', error))
 
     }
 

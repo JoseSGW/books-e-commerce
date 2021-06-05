@@ -8,7 +8,7 @@ const {
 } = require("../controllers/auth.controller");
 
 router.post("/login", login);
-router.get('/logout', logout)
+router.post('/logout', logout)
 /* router.post("/logout", logout);
 router.get("/me", me); */
 

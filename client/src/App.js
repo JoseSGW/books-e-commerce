@@ -5,6 +5,7 @@ import GlobalStyle, { styles } from "./globalStyles"
 import { ThemeProvider } from "styled-components";
 import { setUser } from './actions/userLoggedIn';
 import { useDispatch } from 'react-redux';
+import { CookiesProvider } from 'react-cookie';
 
 
 
@@ -21,11 +22,12 @@ function App() {
 
 
   return (
-
-    <ThemeProvider theme={{ styles }}>
-      <GlobalStyle />
-      <AppRouter />
-    </ThemeProvider>
+    <CookiesProvider>
+      <ThemeProvider theme={{ styles }}>
+        <GlobalStyle />
+        <AppRouter />
+      </ThemeProvider>
+    </CookiesProvider>
   );
 }
 
