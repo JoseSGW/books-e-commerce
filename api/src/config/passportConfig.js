@@ -1,6 +1,10 @@
+const { User } = require('../db')
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const { User } = require('../db')
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
+
 
 passport.use(new LocalStrategy(
     function (username, password, done) {
@@ -14,6 +18,24 @@ passport.use(new LocalStrategy(
     }
 ));
 
+passport.use(new JwtStrategy(
+    {
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: 'soyUnSuperSecretoJWT'
+    },
+    function (jwt_payload, done) {
+        console.log("hola")
+        User.findByPk(jwt_payload.id)
+            .then(user => {
+                return done(null, user)
+            })
+            .catch(err => {
+                return done(err, false, {
+                    message: 'Token not matched.'
+                });
+            })
+    })
+)
 
 
 passport.serializeUser(function (user, done) {

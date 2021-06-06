@@ -4,8 +4,20 @@ import { types } from "../types/types";
 export const setProducts = (offset = 0, limit = 40, word = '', location) => {
     return async (dispatch) => {
 
+        let token = null;
+
+        if(localStorage.getItem('user')) {
+            token = JSON.parse(localStorage.getItem('user')).token
+        }
         try {
-            const response = await fetch(`http://localhost:3001/books/${offset}/${limit}?word=${word}`);
+            const response = await fetch(`http://localhost:3001/books/${offset}/${limit}?word=${word}`, {
+                headers: {
+                    'authorization': `Bearer ${token}`,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+            });
             const data = await response.json();
             dispatch({
                 type: types.SET_PRODUCTS,

@@ -15,12 +15,15 @@ export const LoggedInUserIcon = ({ firstname }) => {
     const dispatch = useDispatch();
 
     const handleSignOff = () => {
+        const { token } = JSON.parse(localStorage.getItem('user'))
         fetch('http://localhost:3001/auth/logout', {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
+                'authorization': token,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
+            credentials: 'include',
         })
             .then(() => {
                 localStorage.clear();

@@ -24,6 +24,7 @@ export const Login = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(user),
+            credentials: 'include'
         })
             .then(response => response.json())
             .then(user => {

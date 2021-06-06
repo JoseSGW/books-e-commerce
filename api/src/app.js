@@ -33,7 +33,7 @@ server.use(
   })
 );
 
-server.use(
+/* server.use(
   cookieSession({
     secret: 'secret',
     name: 'session',
@@ -41,7 +41,7 @@ server.use(
     saveUninitialized: true,
     maxAge: 24 * 60 * 60 * 1000 
   })
-);
+); */
 
 server.use(passport.initialize());
 server.use(passport.session());
