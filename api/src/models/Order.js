@@ -5,10 +5,6 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     // defino el modelo
     const Order = sequelize.define('order', {
-        user_id: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         total_price: {
             type: DataTypes.INTEGER,
         },

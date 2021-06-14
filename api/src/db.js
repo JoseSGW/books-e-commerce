@@ -41,7 +41,11 @@ User.belongsToMany(Book, {through: 'User_Book'});
 Book.belongsToMany(User, {through: 'User_Book'});
 
 Book.belongsToMany(Order, {through: Order_car, foreignKey: 'product_id'});
-Order.belongsToMany(Book, {through: Order_car, foreignKey: 'product_id'})
+Order.belongsToMany(Book, {through: Order_car, foreignKey: 'product_id'});
+
+User.hasMany(Order);
+Order.belongsTo(User);
+
 
 Book.belongsToMany(Genres, {through: 'Book_Genres'});
 Genres.belongsToMany(Book, {through: 'Book_Genres'});
