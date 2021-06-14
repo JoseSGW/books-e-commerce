@@ -24,7 +24,7 @@ passport.use(new JwtStrategy(
         secretOrKey: 'soyUnSuperSecretoJWT'
     },
     function (jwt_payload, done) {
-        console.log("hola")
+        console.log("hola", jwt_payload)
         User.findByPk(jwt_payload.id)
             .then(user => {
                 return done(null, user)

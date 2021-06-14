@@ -24,6 +24,7 @@ export const Catalogue = () => {
             {
                 products.map(p => 
                 <CardComponent 
+                    key={p.id}
                     name={p.name}
                     year={p.year}
                     author={p.author}
