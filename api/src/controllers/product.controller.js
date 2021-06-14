@@ -55,8 +55,6 @@ const getBookById = async (req, res) => {
 
 const getBooks = async (req, res) => {
 
-    console.log(req)
-
     const { offset = 0, limit = 40 } = req.params;
 
     const newKeyWord = req.query?.word;

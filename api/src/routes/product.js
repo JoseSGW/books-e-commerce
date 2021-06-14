@@ -9,7 +9,7 @@ const {
 
 //aqui van las funciones para cada ruta
 router.get("/getBookById/:idProduct", getBookById)
-router.get("/:offset/:limit", getBooks)
+router.get("/:offset/:limit", passport.authenticate('jwt', {session: false}), getBooks)
 router.get("/filteringOptions", filteringOptions)
 router.get("/productByFilters", productFilter)
 router.post("/addBooks", passport.authenticate('jwt', {session: false}), addBooks)

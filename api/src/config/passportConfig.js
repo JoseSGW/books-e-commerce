@@ -21,12 +21,14 @@ passport.use(new LocalStrategy(
 passport.use(new JwtStrategy(
     {
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: 'soyUnSuperSecretoJWT'
+        secretOrKey: 'soyUnSuperSecretoJWT',
+        passReqToCallback: true, //permite pasar el req
     },
-    function (jwt_payload, done) {
+    function (req, jwt_payload, done) {
         console.log("hola", jwt_payload)
         User.findByPk(jwt_payload.id)
             .then(user => {
+                //req.user = user;
                 return done(null, user)
             })
             .catch(err => {

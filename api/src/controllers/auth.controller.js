@@ -24,13 +24,6 @@ const login = async (req, res, next) => {
                 user_id: user.id,
                 token
             })
-
-            /* return res.status(200).json({
-                firstname: user.firstname,
-                lastname: user.lastname,
-                email: user.email,
-                user_id: user.id
-            }) */
         });
     })(req, res, next);
 }
