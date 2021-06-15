@@ -18,7 +18,6 @@ export function ContainerProductsInCart() {
     let totalPrice = 0
 
     useEffect(() => {
-
     }, [ShoppingCartProduct]);
 
     return (
