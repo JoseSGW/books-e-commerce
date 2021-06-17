@@ -40,12 +40,11 @@ const { User, Genres, Book, Images, Order, Discount, Order_car } = sequelize.mod
 User.belongsToMany(Book, {through: 'User_Book'});
 Book.belongsToMany(User, {through: 'User_Book'});
 
-Book.belongsToMany(Order, {through: Order_car, foreignKey: 'product_id'});
-Order.belongsToMany(Book, {through: Order_car, foreignKey: 'product_id'});
+Book.belongsToMany(Order, {through: Order_car});
+Order.belongsToMany(Book, {through: Order_car});
 
 User.hasMany(Order);
 Order.belongsTo(User);
-
 
 Book.belongsToMany(Genres, {through: 'Book_Genres'});
 Genres.belongsToMany(Book, {through: 'Book_Genres'});
@@ -55,7 +54,7 @@ Discount.belongsToMany(Book, {through: 'Book_Discount'});
 
 Book.hasMany(Images);
 Images.belongsTo(Book);
-// Product.hasMany(Reviews);
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

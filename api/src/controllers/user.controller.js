@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize");
-const { Book, Genres, Images, conn, User } = require("../db")
-const NodeCache = require("node-cache");
-const userCache = new NodeCache();
+const userCache = require("../config/userCache");
+const { Book, Genres, Images, conn, User, Order } = require("../db")
 
 const Op = Sequelize.Op;
 
@@ -78,14 +77,27 @@ const cartUserUpdate = (req, res) => {
 
     userCache.set('userId', updatedProducts)
 
-    console.log(userCache.get('userId'))
-
-    res.json({msg: 'Carrito actualizado'})
+    res.json({ msg: 'Carrito actualizado' })
 }
 
-const insertCartIntoDatabase = () => {
+const insertCartIntoDatabase = async (req, res) => {
 
-    
+    //Books y Orders
+    try {
+
+        await Order.setBooks([])
+
+        const products = userCache.get('userId')
+
+        for (let { id, amount } of products) {
+            await Order.addBook(id, { quantity: amount })
+        }
+
+        res.json({ msg: 'Carrito en base de datos actualizado' })
+    } catch (error) {
+        console.error(error)
+    }
+
 }
 
 
@@ -93,5 +105,6 @@ const insertCartIntoDatabase = () => {
 module.exports = {
     getUsers,
     addUser,
-    cartUserUpdate
+    cartUserUpdate,
+    insertCartIntoDatabase
 }

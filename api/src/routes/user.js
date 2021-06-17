@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 
 const {
-    getUsers, addUser, cartUserUpdate
+    getUsers, addUser, cartUserUpdate, insertCartIntoDatabase
 } = require("../controllers/user.controller")
 
 
@@ -10,6 +10,7 @@ const {
 router.post("/addUser", addUser)
 router.get("/:offset/:limit", getUsers)
 router.put("/updateCart", cartUserUpdate)
+router.post("/insertProducts", insertCartIntoDatabase)
 
 
 

@@ -28,7 +28,7 @@ passport.use(new JwtStrategy(
         console.log("hola", jwt_payload)
         User.findByPk(jwt_payload.id)
             .then(user => {
-                //req.user = user;
+                req.user = user;
                 return done(null, user)
             })
             .catch(err => {
