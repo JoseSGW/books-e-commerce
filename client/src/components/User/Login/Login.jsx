@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 import { useTheme } from 'styled-components'
+import { addToShoppingCart } from '../../../actions/ShoppingCart'
 import { setUser } from '../../../actions/userLoggedIn'
 import { useForm } from '../../../hooks/useForm'
 
@@ -28,8 +29,10 @@ export const Login = () => {
         })
             .then(response => response.json())
             .then(user => {
+                const { order } = user;
                 localStorage.setItem('user', JSON.stringify(user))
                 dispatch(setUser(user))
+                if(order) dispatch(addToShoppingCart(order))           
                 history.push("/");
             })
             .catch(error => console.error('Error:', error))

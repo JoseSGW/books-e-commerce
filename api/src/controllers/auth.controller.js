@@ -20,9 +20,9 @@ const login = async (req, res, next) => {
                 return next(err);
             }
             const token = jwt.sign({ id: user.id }, 'soyUnSuperSecretoJWT', { expiresIn: '1d' })
-            
+
             // comprobamos si el usuario tiene un carrito de compras activo
-            const { books } = await Order.findOne({
+            const orderExist = await Order.findOne({
                 where: {
                     userId: user.id,
                     status: 'OPEN'
@@ -37,22 +37,28 @@ const login = async (req, res, next) => {
                 nest: true
             })
 
-            const quantity_books = books.map(b => {
-                return {
-                    id: b.id,
-                    name: b.name,
-                    price: b.price,
-                    images: b.images,
-                    amount: b.order_car.quantity
-                }
-            })
+            let quantity_books = []; //los productos del usuario. Se llenaran despues en caso que exista una orden
+
+            if (orderExist) {
+                const { books } = orderExist;
+
+                quantity_books = books.map(b => {
+                    return {
+                        id: b.id,
+                        name: b.name,
+                        price: b.price,
+                        images: b.images,
+                        amount: b.order_car.quantity
+                    }
+                })
+            }
 
             return res.json({
                 firstname: user.firstname,
                 lastname: user.lastname,
                 email: user.email,
                 user_id: user.id,
-                order: quantity_books.length > 0 ? quantity_books : null,
+                order: quantity_books,
                 token
             })
         });

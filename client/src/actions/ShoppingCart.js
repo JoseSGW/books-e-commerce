@@ -21,3 +21,9 @@ export const updateAmountToShoppingCart = (payload) => {
         payload
     }
 }
+
+export const clearShoppingCart = () => {
+    return {
+        type: types.CLEAR_SHOPPING_CART
+    }
+}

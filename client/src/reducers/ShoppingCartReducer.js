@@ -33,6 +33,11 @@ export const ShoppingCartReducer = (state = initialState, action) => {
                     return p
                 })
             }
+        case types.CLEAR_SHOPPING_CART:
+            return {
+                ...state,
+                ShoppingCartProduct: []
+            }
         default:
             return state;
     }

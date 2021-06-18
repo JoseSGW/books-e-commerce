@@ -2,22 +2,23 @@ import React from 'react'
 import PersonIcon from '@material-ui/icons/Person';
 import { Button, IconButton } from '@material-ui/core';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { DivUserOptions } from './LoggedInUserIcon.styled';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../../actions/userLoggedIn';
-
-
+import { clearShoppingCart } from '../../actions/ShoppingCart';
 
 
 export const LoggedInUserIcon = ({ firstname }) => {
 
     const dispatch = useDispatch();
 
+    const history = useHistory()
+
     const handleSignOff = () => {
         let token = null;
 
-        if(localStorage.getItem('user')) {
+        if (localStorage.getItem('user')) {
             token = JSON.parse(localStorage.getItem('user')).token
         }
         fetch('http://localhost:3001/auth/logout', {
@@ -31,7 +32,9 @@ export const LoggedInUserIcon = ({ firstname }) => {
         })
             .then(() => {
                 localStorage.clear();
-                dispatch(removeUser())
+                dispatch(clearShoppingCart());
+                dispatch(removeUser());
+                history.push("/")
             })
             .catch(error => console.error('Error:', error))
 
