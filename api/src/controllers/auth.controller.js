@@ -1,6 +1,6 @@
 const passport = require("passport");
 const jwt = require('jsonwebtoken');
-const { Book, Genres, Images, conn, Order } = require("../db");
+const { Book, Genres, Images, conn, Order, Order_car } = require("../db");
 const userCache = require("../config/userCache");
 
 
@@ -14,16 +14,45 @@ const login = async (req, res, next) => {
             return res.redirect('/login');
         }
 
-        req.logIn(user, function (err) {
+        req.logIn(user, async (err) => {
+
             if (err) {
                 return next(err);
             }
             const token = jwt.sign({ id: user.id }, 'soyUnSuperSecretoJWT', { expiresIn: '1d' })
+            
+            // comprobamos si el usuario tiene un carrito de compras activo
+            const { books } = await Order.findOne({
+                where: {
+                    userId: user.id,
+                    status: 'OPEN'
+                },
+                include: {
+                    model: Book,
+                    include: {
+                        model: Images,
+                        nest: true
+                    }
+                },
+                nest: true
+            })
+
+            const quantity_books = books.map(b => {
+                return {
+                    id: b.id,
+                    name: b.name,
+                    price: b.price,
+                    images: b.images,
+                    amount: b.order_car.quantity
+                }
+            })
+
             return res.json({
                 firstname: user.firstname,
                 lastname: user.lastname,
                 email: user.email,
                 user_id: user.id,
+                order: quantity_books.length > 0 ? quantity_books : null,
                 token
             })
         });
@@ -50,15 +79,13 @@ const logout = async (req, res) => {
 
         await orderFound.setBooks([])
 
-        for (let { id, amount } of products) {
-            const book = await Book.findByPk(id) //comprobar si hay stock
-            await orderFound.addBook(book, {through: { quantity: amount }})
+        if (products && products.length > 0) {
+
+            for (let { id, amount } of products) {
+                const book = await Book.findByPk(id) //comprobar si hay stock
+                await orderFound.addBook(book, { through: { quantity: amount } })
+            }
         }
-
-
-
-
-
 
 
 
