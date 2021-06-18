@@ -46,14 +46,13 @@ const logout = async (req, res) => {
                 status: 'OPEN'
             },
             nest: true,
-            raw: true
         })
 
-        console.log(orderFound)
         await orderFound.setBooks([])
 
         for (let { id, amount } of products) {
-            await orderFound.id.addBook(id, { quantity: amount })
+            const book = await Book.findByPk(id) //comprobar si hay stock
+            await orderFound.addBook(book, {through: { quantity: amount }})
         }
 
 
