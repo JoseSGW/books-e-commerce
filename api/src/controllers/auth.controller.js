@@ -92,9 +92,7 @@ const logout = async (req, res) => {
                 await orderFound.addBook(book, { through: { quantity: amount } })
             }
         }
-
-
-
+        
     } catch (error) {
         console.error(error)
     }

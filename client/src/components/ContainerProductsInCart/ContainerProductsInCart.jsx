@@ -20,6 +20,7 @@ export function ContainerProductsInCart() {
     useEffect(() => {
     }, [ShoppingCartProduct]);
 
+
     return (
         <Container style={{ maxWidth: '90vw', display: 'flex', padding: '2rem' }}>
             <Container style={{ maxWidth: '70%', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>

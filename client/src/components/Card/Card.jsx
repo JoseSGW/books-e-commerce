@@ -22,7 +22,7 @@ export const CardComponent = ({ id, name, year, author, editorial, images, price
             <StyledCardContent className="info-container" component="div">
                 <StyledCardActionArea className="titles-container" component={Link} to={`/details/${id}`}>
                     <StyledTypography component="h2" className="book-tittle">{name}</StyledTypography>
-                    <StyledTypography component="h3" >{author}</StyledTypography>
+                    <StyledTypography component="h3" className="book-author">{author}</StyledTypography>
 
                     <StyledCardContent className="price-container">
                         <StyledTypography component="h3" >{price}</StyledTypography>

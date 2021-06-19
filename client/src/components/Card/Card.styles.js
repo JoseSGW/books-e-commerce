@@ -31,6 +31,14 @@ export const StyledCard = styled(Card)`
         height: 80%;
     }
 
+    .book-tittle{
+        height: 70%;
+    }
+
+    .book-author{
+        height: 15%;
+    }
+
     .btn{
         padding: 3px;
         margin: 0;
@@ -39,6 +47,10 @@ export const StyledCard = styled(Card)`
 
 export const StyledCardActionArea = styled(CardActionArea)`
     margin: 0;
+
+    .book_tittle{
+        height: 70%;
+    }
 `
 
 export const StyledCardMedia = styled(CardMedia)`
@@ -54,6 +66,11 @@ export const StyledCardContent = styled(CardContent)`
         height: 30%;
         display: flex;
         gap: 4%;
+    }
+
+    .price-container{
+        margin: 0;
+        padding: 0;
     }
 `
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { addToShoppingCart } from '../actions/ShoppingCart';
 import { CatalogueContainer } from '../components/Container/CatalogueContainer';
 import { ContainerProductsInCart } from '../components/ContainerProductsInCart/ContainerProductsInCart';
 import { DetailsBook } from '../components/DetailsBook/DetailsBook';
@@ -15,26 +16,43 @@ import { SignIn } from '../components/User/Sign-In/SignIn';
 export const AppRouter = () => {
 
     const { ShoppingCartProduct } = useSelector(state => state.shoppingCart)
+    const { user } = useSelector(state => state.userLoggedIn)
+
+    const dispatch = useDispatch()
+
+    // si no hay user logeado se guardara el carrito en el local storage
+    useEffect(() => {
+        if (!user.name) {
+            const localProducts = JSON.parse(localStorage.getItem('guestShoppingCart'));
+            dispatch(addToShoppingCart(localProducts))
+        }
+    }, [])
+
 
     useEffect(() => {
+
+        if (!user.name) {
+            localStorage.setItem('guestShoppingCart', JSON.stringify(ShoppingCartProduct))
+        }
 
         const updatedProducts = ShoppingCartProduct.map(p => {
             return { id: p.id, amount: p.amount }
         })
-        
+
         fetch(`http://localhost:3001/users/updateCart`, {
             method: 'PUT',
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({updatedProducts})
+            body: JSON.stringify({ updatedProducts })
         })
             .then()
             .catch(err => {
                 console.error(err)
             })
     }, [ShoppingCartProduct]);
+
 
 
     return (
