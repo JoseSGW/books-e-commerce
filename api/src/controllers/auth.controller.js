@@ -2,6 +2,8 @@ const passport = require("passport");
 const jwt = require('jsonwebtoken');
 const { Book, Genres, Images, conn, Order, Order_car } = require("../db");
 const userCache = require("../config/userCache");
+const { saveInDbUserShoppingCart, haveAShoppingCart } = require("../config/authUtilities");
+
 
 
 
@@ -21,37 +23,7 @@ const login = async (req, res, next) => {
             }
             const token = jwt.sign({ id: user.id }, 'soyUnSuperSecretoJWT', { expiresIn: '1d' })
 
-            // comprobamos si el usuario tiene un carrito de compras activo
-            const orderExist = await Order.findOne({
-                where: {
-                    userId: user.id,
-                    status: 'OPEN'
-                },
-                include: {
-                    model: Book,
-                    include: {
-                        model: Images,
-                        nest: true
-                    }
-                },
-                nest: true
-            })
-
-            let quantity_books = []; //los productos del usuario. Se llenaran despues en caso que exista una orden
-
-            if (orderExist) {
-                const { books } = orderExist;
-
-                quantity_books = books.map(b => {
-                    return {
-                        id: b.id,
-                        name: b.name,
-                        price: b.price,
-                        images: b.images,
-                        amount: b.order_car.quantity
-                    }
-                })
-            }
+            const quantity_books = await haveAShoppingCart(user) //comprobar si el usuario tiene carrito de compra activo
 
             return res.json({
                 firstname: user.firstname,
@@ -70,40 +42,37 @@ const logout = async (req, res) => {
     const userId = req.user.id;
     const products = userCache.get('userId')
 
-    try {
-        const [orderFound] = await Order.findOrCreate({
-            where: {
-                userId: userId,
-                status: 'OPEN'
-            },
-            defaults: {
-                userId: userId,
-                status: 'OPEN'
-            },
-            nest: true,
-        })
+    saveInDbUserShoppingCart(userId, products)
 
-        await orderFound.setBooks([])
-
-        if (products && products.length > 0) {
-
-            for (let { id, amount } of products) {
-                const book = await Book.findByPk(id) //comprobar si hay stock
-                await orderFound.addBook(book, { through: { quantity: amount } })
-            }
-        }
-        
-    } catch (error) {
-        console.error(error)
-    }
-
+    
     if (req.isAuthenticated()) {
         req.logout();
     }
     res.status(200).send("Haz hecho Logout");
 };
 
+const saveShoppingCart = async (req, res) => {
+    const userId = req.user.id;
+    const products = userCache.get('userId')
+
+    saveInDbUserShoppingCart(userId, products)
+    res.status(200);
+}
+
+const userHaveAShoppingCart = async (req, res) => {
+
+    const user = req.user
+
+    const quantity_books = await haveAShoppingCart(user)
+
+    res.json(quantity_books)
+}
+
+
+
 module.exports = {
     login,
-    logout
+    logout,
+    saveShoppingCart,
+    userHaveAShoppingCart
 }

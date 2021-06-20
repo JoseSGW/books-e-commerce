@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledCardMedia, StyledTypography, StyledCard, StyledCardContent, StyledCardActionArea } from './Card.styles'
 import { Link } from 'react-router-dom';
-import { PurchaseButtons } from '../../PurchaseButtons/PurchaseButtons';
+import { PurchaseButtons } from '../PurchaseButtons/PurchaseButtons';
 
 
 const genericUrl = "https://www.julianmarquina.es/wp-content/uploads/Para-efecto-legales-un-libro-es-todo-impreso-no-periodico-que-contiene-49-paginas-o-mas.jpg"

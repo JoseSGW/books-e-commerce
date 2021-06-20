@@ -7,7 +7,6 @@ import { ContainerProductsInCart } from '../components/ContainerProductsInCart/C
 import { DetailsBook } from '../components/DetailsBook/DetailsBook';
 import { Home } from "../components/Home/Home"
 import { Nav } from '../components/Nav/Nav';
-//import { ProductsInCart } from '../components/ProductsInCart/ProductsInCart';
 import { Login } from '../components/User/Login/Login';
 import { SignIn } from '../components/User/Sign-In/SignIn';
 
@@ -20,18 +19,57 @@ export const AppRouter = () => {
 
     const dispatch = useDispatch()
 
-    // si no hay user logeado se guardara el carrito en el local storage
+    let token;
+
+    if (localStorage.getItem('user')) {
+        token = JSON.parse(localStorage.getItem('user')).token
+    }
+
+    window.onbeforeunload = () => {
+
+        fetch('http://localhost:3001/auth/saveShoppingCart', {
+            method: 'POST',
+            headers: {
+                'authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        })
+    }
+
+
     useEffect(() => {
-        if (!user.name) {
-            const localProducts = JSON.parse(localStorage.getItem('guestShoppingCart'));
-            dispatch(addToShoppingCart(localProducts))
-        }
+        fetch('http://localhost:3001/auth/userHaveAShoppingCart', {
+            method: 'POST',
+            headers: {
+                'authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        })
+            .then(response => response.json())
+            .then(products => {
+                dispatch(addToShoppingCart(products))
+            })
+            .catch(error => console.error('Error:', error))
     }, [])
 
 
+    // si no hay user logeado se guardara el carrito en el local storage
     useEffect(() => {
+        if (!user.firstname) {
+            const localProducts = JSON.parse(localStorage.getItem('guestShoppingCart'));
+            if (localProducts && localProducts[0] != null) {
+                dispatch(addToShoppingCart(localProducts))
+            }
+        }
+    }, [user])
 
-        if (!user.name) {
+
+    useEffect(() => {
+        if (!user.firstname) {
             localStorage.setItem('guestShoppingCart', JSON.stringify(ShoppingCartProduct))
         }
 

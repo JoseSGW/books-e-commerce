@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { StyledCardContent } from './PurchaseButtons.styles';
-import { addToShoppingCart } from '../actions/ShoppingCart';
+import { addToShoppingCart } from '../../actions/ShoppingCart';
 import { useDispatch } from 'react-redux';
 
 
@@ -20,7 +20,7 @@ export const PurchaseButtons = ({product}) => {
                 onClick={() => dispatch(addToShoppingCart(product))}
                 className="btn btn-filtrar"
                 variant="outlined"
-            > Añadir al carrito
+            > Agregar
                 <ShoppingCartIcon />
             </Button>
         </StyledCardContent>

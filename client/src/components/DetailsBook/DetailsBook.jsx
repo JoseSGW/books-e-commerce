@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
-import { PurchaseButtons } from '../../PurchaseButtons/PurchaseButtons'
+import { PurchaseButtons } from '../PurchaseButtons/PurchaseButtons'
 import { StyledContainer, ResumeContainer, GeneralContainer } from './DetailsBook.styles'
 const genericUrl = "https://www.julianmarquina.es/wp-content/uploads/Para-efecto-legales-un-libro-es-todo-impreso-no-periodico-que-contiene-49-paginas-o-mas.jpg"
 
