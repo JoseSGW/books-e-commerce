@@ -10,7 +10,7 @@ const genericUrl = "https://www.julianmarquina.es/wp-content/uploads/Para-efecto
 export const CardComponent = ({ id, name, year, author, editorial, images, price }) => {
 
     return (
-        <StyledCard>
+        <StyledCard key={id}>
             <StyledCardActionArea component={Link} to={`/details/${id}`} className="img-cardActionMedia">
                 <StyledCardMedia
                     className="card-container"

@@ -41,65 +41,67 @@ export const FilterBooks = () => {
         dispatch(setProductsByFilters(form))
     }
 
+
     return (
+        loading &&
         <FitlerContainer>
-            <FormControl action="" className="form-container">
+            <FormControl className="form-container">
 
-                    <FormControl className="filter">
-                        <Autocomplete
-                            className="maxHeight"
-                            id="author-autocomplete"
-                            options={authors}
-                            onChange={(e, val) => handleInputChange({ target: { name: "author", value: val ? val.author : ""} })} name="author"
-                            getOptionLabel={(author) => author.author}
-                            renderInput={(params) => <TextField {...params} label="Autor" variant="outlined" />}
-                        />
-                    </FormControl>
+                <FormControl className="filter">
+                    <Autocomplete
+                        className="maxHeight"
+                        id="author-autocomplete"
+                        options={authors && authors}
+                        onChange={(e, val) => handleInputChange({ target: { name: "author", value: val ? val.author : "" } })} name="author"
+                        getOptionLabel={(author) => author.author}
+                        renderInput={(params) => <TextField {...params} label="Autor" variant="outlined" />}
+                    />
+                </FormControl>
 
-                    <FormControl className="filter">
-                        <Autocomplete
-                            className="maxHeight"
-                            id="year-autocomplete"
-                            options={years}
-                            onChange={(e, val) => handleInputChange({ target: { name: "year", value: val ? parseInt(val.year) : ""} })} name="year"
-                            getOptionLabel={(year) => year.year.toString()}
-                            renderInput={(params) => <TextField {...params} label="Año" variant="outlined" />}
-                        />
-                    </FormControl>
+                <FormControl className="filter">
+                    <Autocomplete
+                        className="maxHeight"
+                        id="year-autocomplete"
+                        options={years && years}
+                        onChange={(e, val) => handleInputChange({ target: { name: "year", value: val ? parseInt(val.year) : "" } })} name="year"
+                        getOptionLabel={(year) => year.year.toString()}
+                        renderInput={(params) => <TextField {...params} label="Año" variant="outlined" />}
+                    />
+                </FormControl>
 
-                    <FormControl className="filter">
-                        <Autocomplete
-                            className="maxHeight"
-                            id="genre-autocomplete"
-                            options={genres}
-                            onChange={(e, val) => handleInputChange({ target: { name: "genre", value: val ? val.name : ""} })} name="genre"
-                            getOptionLabel={(genre) => genre.name}
-                            renderInput={(params) => <TextField {...params} label="Genero" variant="outlined" />}
-                        />
-                    </FormControl>
+                <FormControl className="filter">
+                    <Autocomplete
+                        className="maxHeight"
+                        id="genre-autocomplete"
+                        options={genres && genres}
+                        onChange={(e, val) => handleInputChange({ target: { name: "genre", value: val ? val.name : "" } })} name="genre"
+                        getOptionLabel={(genre) => genre.name}
+                        renderInput={(params) => <TextField {...params} label="Genero" variant="outlined" />}
+                    />
+                </FormControl>
 
-                    <FormControl className="filter price-container">
-                        <Typography id="range-slider" gutterBottom className="maxHeight">
-                            Precio entre
-                        </Typography>
-                        <Slider
-                            className="maxHeight"
-                            name="range"
-                            value={loading && [form.range[0], form.range[1]]}
-                            onChange={(e, val) => handleInputChange({ target: { name: "range", value: val } })}
-                            valueLabelDisplay="auto"
-                            aria-labelledby="range-slider"
-                            max={max_price}
-                            min={min_price}
-                        />
-                    </FormControl>
+                <FormControl className="filter price-container">
+                    <Typography id="range-slider" gutterBottom className="maxHeight">
+                        Precio entre
+                    </Typography>
+                    <Slider
+                        className="maxHeight"
+                        name="range"
+                        value={loading && [form.range[0], form.range[1]]}
+                        onChange={(e, val) => handleInputChange({ target: { name: "range", value: val } })}
+                        valueLabelDisplay="auto"
+                        aria-labelledby="range-slider"
+                        max={max_price}
+                        min={min_price}
+                    />
+                </FormControl>
 
-                    <FormControl className="botones-de-filtro">
-                        <Button onClick={() => dispatch(setProducts())} className="btn-limpiar" variant="outlined">Limpiar filtro</Button>
-                        <Button onClick={handleSubmit} className="btn-filtrar" variant="outlined">Filtrar</Button>
-                    </FormControl>
+                <FormControl className="botones-de-filtro">
+                    <Button onClick={() => dispatch(setProducts())} className="btn-limpiar" variant="outlined">Limpiar filtro</Button>
+                    <Button onClick={handleSubmit} className="btn-filtrar" variant="outlined">Filtrar</Button>
+                </FormControl>
 
-                
+
             </FormControl>
         </FitlerContainer>
     )

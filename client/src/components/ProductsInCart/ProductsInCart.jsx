@@ -30,7 +30,7 @@ export function ProductsInCart({ name, amount, id, images, price }) {
     const classes = useStyles();
 
     return (
-        <Container  style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', padding: 0, gap: '1rem', maxWidth: '100%' }}>
+        <Container key={id} style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', padding: 0, gap: '1rem', maxWidth: '100%' }}>
             <CardMedia className={classes.media} image={images && images[0] ? images[0].url : genericUrl} ></CardMedia>
 
             <Typography component='h2' style={{ width: '40%', alignSelf: 'center'}}>

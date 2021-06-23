@@ -1,9 +1,9 @@
 import { Button, Container, FormGroup, FormHelperText, Input, InputLabel, TextField, Typography } from '@material-ui/core'
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 import { useTheme } from 'styled-components'
-import { addToShoppingCart } from '../../../actions/ShoppingCart'
+import { addToShoppingCart, clearShoppingCart } from '../../../actions/ShoppingCart'
 import { setUser } from '../../../actions/userLoggedIn'
 import { useForm } from '../../../hooks/useForm'
 
@@ -30,8 +30,20 @@ export const Login = () => {
             .then(response => response.json())
             .then(user => {
                 const { order } = user;
+                
                 localStorage.setItem('user', JSON.stringify(user))
                 dispatch(setUser(user))
+                
+                const guestShoppingCart = JSON.parse(localStorage.getItem('guestShoppingCart')) 
+                dispatch(clearShoppingCart())
+
+                if(guestShoppingCart && order){ //si existia carrito como invitado se combina con la order de usuario logeado
+                    guestShoppingCart.forEach(productSC => {
+                        const alreadyExist = order.find(elementOrder => elementOrder.id === productSC.id)
+                        alreadyExist ? alreadyExist.amount += productSC.amount : order.concat(productSC)
+                    })
+                }
+                
                 if(order) dispatch(addToShoppingCart(order))           
                 history.push("/");
             })
