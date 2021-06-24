@@ -3,8 +3,8 @@ var cors = require('cors')
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-const passport = require('./config/passportConfig')
-const cookieSession = require('cookie-session')
+const passport = require('./config/passportConfig');
+
 
 
 require('./db.js');

@@ -4,6 +4,7 @@ const productRouter = require('./product.js');
 const genreRouter = require('./genre.js');
 const userRouter = require('./user')
 const authRouter = require('./auth.js')
+const mercadopagoRouter = require('./mercadoPago.js')
 
 const router = Router();
 
@@ -12,7 +13,8 @@ const router = Router();
 // router.use('/auth', authRouter);
 router.use('/books', productRouter);
 router.use('/genres', genreRouter);
-router.use('/users', userRouter)
-router.use('/auth', authRouter)
+router.use('/users', userRouter);
+router.use('/auth', authRouter);
+router.use('/mercadopago', mercadopagoRouter)
 
 module.exports = router;

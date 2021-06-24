@@ -15,6 +15,35 @@ export function ContainerProductsInCart() {
 
     const theme = useTheme()
 
+    const handlePayment = () => {
+        fetch('http://localhost:3001/mercadopago/create_preference', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: 'include',
+            body: JSON.stringify(ShoppingCartProduct)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            const { url } = data;
+            window.location.href = url;
+        })
+        /* .then(function(preference) {
+            createCheckoutButton(preference.id);
+            $(".shopping-cart").fadeOut(500);
+            setTimeout(() => {
+                $(".container_payment").show(500).fadeIn();
+            }, 500);
+        })
+        .catch(function() {
+            alert("Unexpected error");
+            $('#checkout-btn').attr("disabled", false);
+        }) */
+        
+    }
+
+
     let totalPrice = 0
 
     useEffect(() => {
@@ -54,7 +83,7 @@ export function ContainerProductsInCart() {
                     <Typography>$ {totalPrice}</Typography>
                 </Box>
                 <Divider />
-                <Button variant="contained" color="primary">Pagar</Button>
+                <Button variant="contained" color="primary" onClick={handlePayment} /* href="https://sdk.mercadopago.com/js/v2" */>Pagar</Button>
             </Container>
         </Container>
 
