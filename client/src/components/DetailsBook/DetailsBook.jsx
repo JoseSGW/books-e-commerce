@@ -27,7 +27,7 @@ export const DetailsBook = () => {
 
     return (
         <GeneralContainer className="general-container">
-            <StyledContainer>
+            <StyledContainer className="title-container">
                 <div className="info-container">
                     <div className="image-container">
                         <img src={isLoad && images[0] ? images[0].url : genericUrl} alt="book" />
@@ -39,9 +39,10 @@ export const DetailsBook = () => {
                         <h3>{year}</h3>
                         <h3>{editorial}</h3>
                         <h2>Precio: {price}</h2>
+                        <PurchaseButtons className="botones-opciones" product={{ id, name, price, images, amount: 1 }} />
                     </div>
+
                 </div>
-                <PurchaseButtons className="botones-opciones" product={{id, name, price, images, amount: 1}}/>
 
             </StyledContainer>
 

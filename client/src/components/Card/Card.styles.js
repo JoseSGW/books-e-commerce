@@ -24,7 +24,7 @@ export const StyledCard = styled(Card)`
 
     .info-container{
         width: 60%;
-        padding: 10px;
+        padding: 0 10px !important;
     }
 
     .titles-container{
@@ -32,16 +32,21 @@ export const StyledCard = styled(Card)`
     }
 
     .book-tittle{
-        height: 70%;
+        max-height: 60%;
+        padding: .4rem 0;
     }
 
     .book-author{
-        height: 15%;
+        max-height: 15%;
+        padding: .4rem 0;
     }
 
     .btn{
         padding: 3px;
         margin: 0;
+    }
+    .purchaseButtons{
+        padding: .4rem 0;
     }
 `
 
@@ -70,7 +75,7 @@ export const StyledCardContent = styled(CardContent)`
 
     .price-container{
         margin: 0;
-        padding: 0;
+        padding: .5rem 0;
     }
 `
 

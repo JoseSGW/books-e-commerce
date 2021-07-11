@@ -8,12 +8,8 @@ import styled from "styled-components";
 
 
 export const StyledCardContent = styled(CardContent)`
-.option-container{
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 30%;
     display: flex;
-    gap: 4%;
-}
+    justify-content: center;
+    height: 10%;
+    padding: .5rem 0;
 `

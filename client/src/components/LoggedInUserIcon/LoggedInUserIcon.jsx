@@ -1,6 +1,6 @@
 import React from 'react'
 import PersonIcon from '@material-ui/icons/Person';
-import { Button, IconButton } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import { Link, useHistory } from 'react-router-dom';
 import { DivUserOptions } from './LoggedInUserIcon.styled';

@@ -8,6 +8,7 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 import { removeFromShoppingCart, updateAmountToShoppingCart } from '../../actions/ShoppingCart';
 import { useDispatch } from 'react-redux';
+import { useTheme } from 'styled-components'
 
 const genericUrl = "https://www.julianmarquina.es/wp-content/uploads/Para-efecto-legales-un-libro-es-todo-impreso-no-periodico-que-contiene-49-paginas-o-mas.jpg"
 
@@ -29,8 +30,10 @@ export function ProductsInCart({ name, amount, id, images, price }) {
 
     const classes = useStyles();
 
+    const theme = useTheme()
+
     return (
-        <Container key={id} style={{ backgroundColor: '#cfe8fc', height: '5rem', display: 'flex', padding: 0, gap: '1rem', maxWidth: '100%' }}>
+        <Container key={id} style={{ backgroundColor: `${theme.styles.colorSecundario}`, height: '5rem', display: 'flex', padding: 0, gap: '1rem', maxWidth: '100%', borderBottom: `4px solid ${theme.styles.colorPrimarioClaro}`, }}>
             <CardMedia className={classes.media} image={images && images[0] ? images[0].url : genericUrl} ></CardMedia>
 
             <Typography component='h2' style={{ width: '40%', alignSelf: 'center'}}>

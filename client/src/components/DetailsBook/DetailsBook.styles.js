@@ -19,6 +19,7 @@ export const StyledContainer = styled(Container)`
     border: 1px solid black;
     height: 400px;
     width: 100%;
+    background-color: ${props => props.theme.styles.colorSecundario};
 
 
     .info-container{
@@ -33,6 +34,7 @@ export const StyledContainer = styled(Container)`
 
     .text-container{
         padding: 1rem;
+        max-width: 60%;
         h2{
             font-size: 2rem;
         }
@@ -63,5 +65,6 @@ export const ResumeContainer = styled.section`
         font-size: 1.3rem;
         margin: 2% auto;
         border: 1px solid black;
+        background-color: ${props => props.theme.styles.colorSecundario};
 `
 

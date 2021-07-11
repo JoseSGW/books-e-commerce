@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const FitlerContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 20%;
+    height: min(100%, 25rem);
     padding: 1rem;
+    width: min(100%, 20rem);
     border: 1px solid black;
     border-radius: 5px;
     background-color: ${props => props.theme.styles.colorSecundario};

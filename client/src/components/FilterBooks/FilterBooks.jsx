@@ -30,16 +30,20 @@ export const FilterBooks = () => {
             })
     }, [])
 
+    useEffect(()=> {
+        dispatch(setProductsByFilters(form))
+    }, [form])
+
     const [authors, minAndMax, years, genres] = !!filter && filter
 
     let { min_price, max_price } = loading && minAndMax[0]
 
 
 
-    const handleSubmit = (e) => {
+    /* const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(setProductsByFilters(form))
-    }
+    } */
 
 
     return (
@@ -97,8 +101,8 @@ export const FilterBooks = () => {
                 </FormControl>
 
                 <FormControl className="botones-de-filtro">
-                    <Button onClick={() => dispatch(setProducts())} className="btn-limpiar" variant="outlined">Limpiar filtro</Button>
-                    <Button onClick={handleSubmit} className="btn-filtrar" variant="outlined">Filtrar</Button>
+                    {/* <Button onClick={() => dispatch(setProducts())} className="btn-limpiar" variant="outlined">Limpiar filtro</Button> */}
+                    {/* <Button onClick={handleSubmit} className="btn-filtrar" variant="outlined">Filtrar</Button> */}
                 </FormControl>
 
 

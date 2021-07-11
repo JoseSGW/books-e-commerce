@@ -7,19 +7,33 @@ import { addToShoppingCart } from '../../actions/ShoppingCart';
 import { useDispatch } from 'react-redux';
 
 
-
-
-export const PurchaseButtons = ({product}) => {
+export const PurchaseButtons = ({ product }) => {
 
     const dispatch = useDispatch()
 
     return (
-        <StyledCardContent className="option-container">
-            <Button className="btn btn-wish" variant="outlined"><FavoriteIcon /></Button>
+        <StyledCardContent style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            height: "14%",
+            margin: 0,
+            padding: ".4rem",
+            maxWidth: "100%",
+        }}
+            className="option-container">
+            <Button
+                className="btn btn-wish"
+                variant="outlined"
+                style={{ padding: ".7rem" }}
+            >
+                <FavoriteIcon />
+            </Button>
+
             <Button
                 onClick={() => dispatch(addToShoppingCart(product))}
                 className="btn btn-filtrar"
                 variant="outlined"
+                style={{ padding: ".7rem" }}
             > Agregar
                 <ShoppingCartIcon />
             </Button>

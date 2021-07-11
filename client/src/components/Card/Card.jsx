@@ -20,16 +20,16 @@ export const CardComponent = ({ id, name, year, author, editorial, images, price
 
 
             <StyledCardContent className="info-container" component="div">
-                <StyledCardActionArea className="titles-container" component={Link} to={`/details/${id}`}>
+                <StyledCardActionArea component={Link} className="titles-container" to={`/details/${id}`}>
                     <StyledTypography component="h2" className="book-tittle">{name}</StyledTypography>
-                    <StyledTypography component="h3" className="book-author">{author}</StyledTypography>
+                    <StyledTypography noWrap component="h3" className="book-author">{author}</StyledTypography>
 
                     <StyledCardContent className="price-container">
                         <StyledTypography component="h3" >{price}</StyledTypography>
                     </StyledCardContent>
                 </StyledCardActionArea>
 
-                <PurchaseButtons product={{id, name, price, images, amount: 1}}/>
+                <PurchaseButtons className="purchaseButtons" product={{id, name, price, images, amount: 1}}/>
             </StyledCardContent>
         </StyledCard>
     )

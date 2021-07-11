@@ -10,7 +10,5 @@ export const CatalogueContainer = () => {
             <FilterBooks/>
             <Catalogue/>
         </CatalogueCont>
-
-
     )
 }
