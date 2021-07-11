@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
-import { SearchBar } from './search.styles'
+import { SearchForm } from './search.styles'
 import { useHistory } from "react-router-dom"
 import { setProducts } from '../../actions/products'
 
@@ -24,11 +24,9 @@ export const Search = () => {
 
 
     return (
-        <SearchBar>
-            <form onSubmit={handleSubmit}>
+            <SearchForm onSubmit={handleSubmit}>
                 <input type="text" onChange={(e) => setWord(e.target.value)} value={word} />
                 <button>Buscar</button>
-            </form>
-        </SearchBar>
+            </SearchForm>
     )
 }

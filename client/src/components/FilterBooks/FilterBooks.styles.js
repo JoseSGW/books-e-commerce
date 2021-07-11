@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const FitlerContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: min(100%, 25rem);
+    /* height: min(100%, 25rem); */
+    height: 25rem;
     padding: 1rem;
     width: min(100%, 20rem);
     border: 1px solid black;

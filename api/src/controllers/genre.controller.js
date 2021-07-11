@@ -1,5 +1,4 @@
 const Sequelize = require("sequelize");
-const { QueryTypes } = require("sequelize");
 const { Book, Genres, conn } = require("../db")
 
 const Op = Sequelize.Op;

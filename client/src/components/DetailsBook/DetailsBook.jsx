@@ -35,15 +35,14 @@ export const DetailsBook = () => {
 
                     <div className="text-container">
                         <h2>{name}</h2>
-                        <h3>{author}</h3>
-                        <h3>{year}</h3>
-                        <h3>{editorial}</h3>
+                        <h3>Autor: {author}</h3>
+                        <h3>Año: {year}</h3>
+                        <h3>Editorial: {editorial}</h3>
                         <h2>Precio: {price}</h2>
                         <PurchaseButtons className="botones-opciones" product={{ id, name, price, images, amount: 1 }} />
                     </div>
 
                 </div>
-
             </StyledContainer>
 
             <ResumeContainer className="resume-container">

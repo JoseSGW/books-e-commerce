@@ -1,16 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux"
 import { setProducts } from '../../actions/products'
 import { NavBar } from "./Nav.styles"
 import CustomizedBadges from '../CounterCartIcon/CounterCartIcon';
 import { LoggedInUserIcon } from '../LoggedInUserIcon/LoggedInUserIcon';
+import { Search } from '../Search/Search';
+
 
 export const Nav = () => {
 
     const dispatch = useDispatch()
 
     const { user } = useSelector(state => state.userLoggedIn)
+    const { pathname } = useLocation();
+
 
     return (
         <NavBar>
@@ -21,7 +25,12 @@ export const Nav = () => {
             </div>
 
             <div className="logo">
-                <Link to="/" ><img src="" alt="logo"></img></Link>
+                {
+                    pathname === '/catalogue' ?
+                        <Search />
+                        :
+                        <Link to="/" ><img src="" alt="logo"></img></Link>
+                }
             </div>
 
 
@@ -33,7 +42,7 @@ export const Nav = () => {
                 {
                     user.user_id && user.user_id > 0 ?
                         <div>
-                            <LoggedInUserIcon {...user}/>
+                            <LoggedInUserIcon {...user} />
                         </div>
                         :
                         <div className="menu-users">

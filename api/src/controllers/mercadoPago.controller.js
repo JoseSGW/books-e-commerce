@@ -18,7 +18,7 @@ const createPreference = (req, res) => {
             quantity: item.amount,
         }
     })
-    console.log(items)
+
     let preference = {
         items,
         back_urls: {

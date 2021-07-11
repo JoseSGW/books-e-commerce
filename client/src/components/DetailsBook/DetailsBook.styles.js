@@ -16,33 +16,38 @@ export const GeneralContainer = styled.div`
 export const StyledContainer = styled(Container)`
     display: flex;
     flex-direction: column;
+    padding: 0 !important;
     border: 1px solid black;
-    height: 400px;
     width: 100%;
     background-color: ${props => props.theme.styles.colorSecundario};
 
 
     .info-container{
         display: flex;
-    }
+        height: 100%;
 
-    .image-container{
-        width: 30%;
-        padding: 1rem;
-        
-    }
 
-    .text-container{
-        padding: 1rem;
-        max-width: 60%;
-        h2{
-            font-size: 2rem;
+        .image-container{
+            width: 30%;
+            justify-self: flex-start;
+            object-fit: cover;
         }
 
-        h3{
-            font-size: 1rem;
+        .text-container{
+            padding: 1rem;
+            max-width: 60%;
+            max-height: 90%;
+            h2{
+                font-size: 1.5rem;
+            }
+
+            h3{
+                font-size: 1rem;
+            }
         }
     }
+
+    
 
     .option-container{
         display: flex;
@@ -61,8 +66,8 @@ export const StyledCssBaseline = styled(CssBaseline)`
 
 
 export const ResumeContainer = styled.section`
-        padding: 1rem;
-        font-size: 1.3rem;
+        padding: 2rem 4rem;
+        font-size: 1.2rem;
         margin: 2% auto;
         border: 1px solid black;
         background-color: ${props => props.theme.styles.colorSecundario};

@@ -53,7 +53,8 @@ export function ContainerProductsInCart() {
                 flexDirection: 'column',
                 maxWidth: '20%',
                 gap: '2rem',
-                padding: '1rem'
+                padding: '1rem',
+                maxHeight: '31rem'
             }}>
                 <Box bgcolor={theme.styles.colorSecundario} style={{ padding: '1rem' }}>
                     <Typography>Total:</Typography>
@@ -69,7 +70,6 @@ export function ContainerProductsInCart() {
                     <Typography>$ {totalPrice}</Typography>
                     <Typography>Precio Total + IVA:</Typography>
                     <Typography>$ {totalPrice * 0.19 + totalPrice}</Typography>
-                    <Typography>Precio X2:</Typography>
                 </Box>
                 <Divider />
                 <Button variant="contained" color="primary" onClick={handlePayment} /* href="https://sdk.mercadopago.com/js/v2" */>Pagar</Button>

@@ -1,21 +1,20 @@
 import styled from 'styled-components'
 
 
-export const SearchBar = styled.div`
+export const SearchForm = styled.form`
+    display: flex;
+    justify-content: center;
+    max-width: 30rem;
 
-    form{
-        display: flex;
-        max-width: 100%;
-
-
-        input{
-            width: 400px;
-            border: none;
-            background-color: ${props => props.theme.styles.colorSecundario};
-        }
-        button{
-            border: none;
-            background-color: ${props => props.theme.styles.colorPrimario};
-        }
+    input{
+        width: 70%;
+        border: .1rem solid ${props => props.theme.styles.colorPrimario};
+        background-color: ${props => props.theme.styles.colorSecundario};
     }
+    button{
+        width: 30%;
+        border: .1rem solid ${props => props.theme.styles.colorPrimario};
+        background-color: ${props => props.theme.styles.colorPrimario};
+    }
+    
 `
